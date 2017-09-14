@@ -12,7 +12,7 @@ $(document).ready(function() {
     // Format an array of elements into a formatted array of elements
     const formatAll = array => array.map((box, i) => {
             box.css({
-                "left": (i % 4) * 25 + 4 + "%",
+                "left": (i % 4) * 25 + 2.5 + "%",
                 "top": Math.floor(i/4) * 50 + "px"
             });
         });
@@ -148,6 +148,26 @@ $(document).ready(function() {
             playersTable.append(newestName);
         });
     }
+
+
+    // Done Button to make first section minimise
+    let doneButton = $(".players__done");
+    let group = $(".js_players__group");
+    let playersContainer = $(".players");
+    let titlePlayers = $(".players__title");
+    let pageDividerOne = $(".js_page-divider-1");
+    doneButton.on("click", () => {
+        playersContainer.animate({
+            height: "0px",
+            padding: "0px"
+        }, 250);
+        group.css("display", "none");
+        playersTable.css("display", "none");
+        titlePlayers.css("display", "none");
+        pageDividerOne.css("display", "none");
+
+    });
+
 
 
 

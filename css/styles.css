@@ -2,12 +2,12 @@ body {
   font-family: 'Hammersmith One', sans-serif; }
 
 h1 {
-  font-size: 40px;
+  font-size: 3.5em;
   color: white; }
 
 h2 {
   color: white;
-  font-size: 30px;
+  font-size: 2.5em;
   text-align: center; }
 
 main {
@@ -25,28 +25,41 @@ main {
     padding: 10px 10px; }
 
 .players {
-  padding: 10px 20px;
+  padding: 20px 20px;
   height: 500px; }
   .players .row {
-    margin-top: 10px; }
+    margin-top: 20px; }
     .players .row .players__form .form__input {
-      height: 32px;
-      border-radius: 5px; }
+      height: 36px;
+      border-radius: 5px;
+      font-size: 1.3em; }
+      .players .row .players__form .form__input:focus {
+        outline: none; }
     .players .row .players__form .form__add {
       padding: 7px 7px;
       border-radius: 5px;
       background-color: #1565c0;
       border: 1px solid white;
-      color: white; }
+      color: white;
+      font-size: 1.3em; }
+      .players .row .players__form .form__add:focus {
+        outline: none; }
+      .players .row .players__form .form__add:hover {
+        cursor: pointer; }
     .players .row .players__done {
       padding: 7px 7px;
       border-radius: 5px;
       background-color: #1565c0;
       border: 1px solid white;
-      color: white; }
+      color: white;
+      font-size: 1.3em; }
+      .players .row .players__done:focus {
+        outline: none; }
+      .players .row .players__done:hover {
+        cursor: pointer; }
   .players .players__table {
     position: absolute;
-    top: 170px;
+    top: 210px;
     left: 0px;
     width: 100%;
     height: 500px; }
@@ -55,38 +68,55 @@ main {
       display: inline-block;
       margin-top: 10px;
       box-sizing: border-box;
-      width: 190px; }
+      width: 235px; }
       .players .players__table .new-player .new-player__name {
         position: relative;
         display: inline-block;
         background-color: #1b5e20;
-        width: 150px;
+        width: 200px;
         padding: 5px 5px;
-        font-size: 18px;
         text-align: center;
         border: 1px solid black;
         border-radius: 5px;
-        color: white; }
+        color: white;
+        font-size: 1.3rem; }
+        @media (max-width: 940px) {
+          .players .players__table .new-player .new-player__name {
+            width: 150px;
+            left: -1%; } }
+        @media (max-width: 800px) {
+          .players .players__table .new-player .new-player__name {
+            width: 120px;
+            left: -1%; } }
       .players .players__table .new-player .new-player__remove {
         position: relative;
         display: inline-block;
         background-color: #f44336;
         border: 1px solid black;
         border-radius: 5px;
-        height: 30px;
-        width: 30px;
-        font-size: 20px;
-        top: 1px;
+        height: 32px;
+        width: 32px;
+        font-size: 1.3rem;
+        top: 0px;
         left: -6px; }
+        .players .players__table .new-player .new-player__remove:focus {
+          outline: none; }
+        .players .players__table .new-player .new-player__remove:hover {
+          cursor: pointer; }
 
 .tournament {
-  padding: 10px 20px; }
+  padding: 20px 20px; }
   .tournament .tournament__title-group button {
     padding: 7px 7px;
     border-radius: 5px;
     background-color: #1565c0;
     border: 1px solid white;
-    color: white; }
+    color: white;
+    font-size: 1.3em; }
+    .tournament .tournament__title-group button:focus {
+      outline: none; }
+    .tournament .tournament__title-group button:hover {
+      cursor: pointer; }
   .tournament .tournament__title-group button, .tournament .tournament__title-group h2 {
     display: inline; }
   .tournament .tournament__title-group .tournament__back {
@@ -99,7 +129,12 @@ main {
     border-radius: 5px;
     background-color: #1565c0;
     border: 1px solid white;
-    color: white; }
+    color: white;
+    font-size: 1.3em; }
+    .winners .winners__title-group button:focus {
+      outline: none; }
+    .winners .winners__title-group button:hover {
+      cursor: pointer; }
   .winners .winners__title-group button, .winners .winners__title-group h2 {
     display: inline; }
   .winners .winners__title-group .winners__back {
