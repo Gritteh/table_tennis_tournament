@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Table-Tennis Tournament</title>
+    <!-- Fonts -->
+    <!-- font-family: 'Hammersmith One', sans-serif; -->
+    <link href="https://fonts.googleapis.com/css?family=Hammersmith+One" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <!-- CSS Reset file -->
+    <link rel="stylesheet" href="css/css-reset.css" />
+    <!-- CSS file -->
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title">T-T Tournament</h1>
+    </header>
+    <!-- Page divider -->
+    <div class="page-divider"></div>
+
+<!-- Main container -->
+    <main>
+<!-- Enter Players section -->
+    <section class="players">
+        <h2 class="players__title">Enter Players</h2>
+
+        <div class="row">
+            <!-- Form for inputting players -->
+            <form class="players__form col-sm-5 ml-auto" action="#">
+                <input class="form__input col-sm-8" type="text" placeholder="John Smith" />
+                <input class="form__add col-sm-3" type="submit" value="ADD" />
+            </form>
+            <button class="players__done col-sm-2 ml-auto mr-auto" type="button">DONE</button>
+        </div>
+
+        <!-- Table of players below -->
+        <div class="players__table">
+            <div> </div>
+            <!-- temporary example -->
+            <!-- <div class="new-player">
+                <p class="new-player__name">
+                    Jack Wood
+                </p>
+                <button class="new-player__remove" type="button">X</button>
+            </div>
+            <div class="new-player">
+                <p class="new-player__name">
+                    John Wick
+                </p>
+                <button class="new-player__remove" type="button">X</button>
+            </div> -->
+        </div>
+
+    </section>
+    <!-- Page divider -->
+    <div class="page-divider"></div>
+
+<!-- Your Tournament section -->
+    <section class="tournament">
+        <!-- Title and buttons container -->
+        <div class="tournament__title-group row">
+            <button class="tournament__back col-sm-2 ml-auto" type="button">Go Back ^</button>
+            <h2 class="tournament__title col-sm-5 ml-auto">Your Tournament</h2>
+            <button class="tournament__start col-sm-2 ml-auto mr-auto" type="button">Start!</button>
+        </div>
+
+        <!-- Tournament layout -->
+        <div class="layout">
+
+        </div>
+    </section>
+    <!-- Page divider -->
+    <div class="page-divider"></div>
+
+<!-- Select Winners section -->
+    <section class="winners">
+        <!-- Title and buttons container -->
+        <div class="winners__title-group row">
+            <button class="winners__back col-sm-2 ml-auto" type="button">Go Back ^</button>
+            <h2 class="winners__title col-sm-5 ml-auto">Select Winners</h2>
+            <button class="winners__reset-winners col-sm-2 ml-auto mr-auto" type="button">Reset Winners</button>
+        </div>
+
+        <!-- Player v Player below -->
+
+
+    </section>
+
+    </main> <!-- End of Main Container -->
+
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- JS file -->
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

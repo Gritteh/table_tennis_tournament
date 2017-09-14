@@ -1,0 +1,105 @@
+body {
+  font-family: 'Hammersmith One', sans-serif; }
+
+h1 {
+  font-size: 40px;
+  color: white; }
+
+h2 {
+  color: white;
+  font-size: 30px;
+  text-align: center; }
+
+main {
+  background-color: #4caf50; }
+
+.page-divider {
+  height: 3px;
+  width: 100%;
+  background-color: white; }
+
+.header {
+  text-align: center;
+  background-color: #1565c0; }
+  .header .header__title {
+    padding: 10px 10px; }
+
+.players {
+  padding: 10px 20px;
+  height: 500px; }
+  .players .row {
+    margin-top: 10px; }
+    .players .row .players__form .form__add {
+      padding: 7px 7px;
+      border-radius: 5px;
+      background-color: #1565c0;
+      border: 1px solid white;
+      color: white; }
+    .players .row .players__done {
+      padding: 7px 7px;
+      border-radius: 5px;
+      background-color: #1565c0;
+      border: 1px solid white;
+      color: white; }
+  .players .players__table {
+    position: absolute;
+    top: 170px;
+    left: 0px;
+    width: 100%;
+    height: 500px; }
+    .players .players__table .new-player {
+      position: absolute;
+      display: inline-block;
+      margin-top: 10px;
+      box-sizing: border-box;
+      width: 190px; }
+      .players .players__table .new-player .new-player__name {
+        position: relative;
+        display: inline-block;
+        background-color: #1b5e20;
+        width: 150px;
+        padding: 5px 5px;
+        font-size: 18px;
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 5px;
+        color: white; }
+      .players .players__table .new-player .new-player__remove {
+        position: relative;
+        display: inline-block;
+        background-color: #f44336;
+        border: 1px solid black;
+        border-radius: 5px;
+        height: 30px;
+        width: 30px;
+        font-size: 20px;
+        top: 1px;
+        left: -6px; }
+
+.tournament {
+  padding: 10px 20px; }
+  .tournament .tournament__title-group button {
+    padding: 7px 7px;
+    border-radius: 5px;
+    background-color: #1565c0;
+    border: 1px solid white;
+    color: white; }
+  .tournament .tournament__title-group button, .tournament .tournament__title-group h2 {
+    display: inline; }
+  .tournament .tournament__title-group .tournament__back {
+    background-color: #546e7a; }
+
+.winners {
+  padding: 10px 20px; }
+  .winners .winners__title-group button {
+    padding: 7px 7px;
+    border-radius: 5px;
+    background-color: #1565c0;
+    border: 1px solid white;
+    color: white; }
+  .winners .winners__title-group button, .winners .winners__title-group h2 {
+    display: inline; }
+  .winners .winners__title-group .winners__back {
+    background-color: #546e7a; }
+
+/*# sourceMappingURL=styles.css.map */
