@@ -65,7 +65,8 @@ main {
         }
         .players__form {
             .form__input {
-
+                height: 32px;
+                border-radius: 5px;
             }
             .form__add {
                 @include button();

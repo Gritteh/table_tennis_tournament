@@ -29,6 +29,9 @@ main {
   height: 500px; }
   .players .row {
     margin-top: 10px; }
+    .players .row .players__form .form__input {
+      height: 32px;
+      border-radius: 5px; }
     .players .row .players__form .form__add {
       padding: 7px 7px;
       border-radius: 5px;
