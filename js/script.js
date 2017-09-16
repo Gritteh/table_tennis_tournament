@@ -147,15 +147,22 @@ $(document).ready(function() {
             // Add it to the HTML
             playersTable.append(newestName);
         });
-    }
+    };
 
 
     // Done Button to make first section minimise
     let doneButton = $(".players__done");
+
+    // Targetting elements I need to hide
     let group = $(".js_players__group");
     let playersContainer = $(".players");
     let titlePlayers = $(".players__title");
     let pageDividerOne = $(".js_page-divider-1");
+
+    // Targetting tournament section for expanding
+    let tournamentContainer = $(".tournament");
+
+    // When done button is clicked, animate container shrinking and hide elements
     doneButton.on("click", () => {
         playersContainer.animate({
             height: "0px",
@@ -164,7 +171,43 @@ $(document).ready(function() {
         group.css("display", "none");
         playersTable.css("display", "none");
         titlePlayers.css("display", "none");
-        pageDividerOne.css("display", "none");
+
+        // Expand Tournament section
+        tournamentContainer.animate({
+            height: "500px",
+        }, 250);
+
+        // Set delay for hiding of the top page divider, to make transition smoother
+        setTimeout(function() {
+            pageDividerOne.css("display", "none");
+        }, 250);
+    });
+
+
+    // "Go back" button
+    let goBackTournament = $(".tournament__back");
+
+    // When the "Go back" button is clicked, expand the "Enter Players" section and display child elements
+    goBackTournament.on("click", () => {
+        pageDividerOne.css("display", "");
+        // Expand players container
+        playersContainer.animate({
+            height: "500px",
+            padding: "20px 20px"
+        }, 250);
+
+        // Minimise tournament section
+        tournamentContainer.animate({
+            height: "80px",
+            paadding: ""
+        }, 250);
+
+        // Delay the display of elements till after the animation is done
+        setTimeout(function() {
+            titlePlayers.css("display", "");
+            group.css("display", "");
+            playersTable.css("display", "");
+        }, 250);
 
     });
 
