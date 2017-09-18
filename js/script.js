@@ -181,6 +181,16 @@ $(document).ready(function() {
         setTimeout(function() {
             pageDividerOne.css("display", "none");
         }, 250);
+
+        //// Set up for tournament display stage
+        // Give later array the full finished array of players
+        playersLeftArray = playersArray;
+        // Give later variable the number of players
+        numberOfPlayers = playersArray.length;
+        // Give later variable the number of players
+        playersLeftLength = playersLeftArray.length;
+        // Create Round 1
+        createRoundOne();
     });
 
 
@@ -209,8 +219,71 @@ $(document).ready(function() {
             playersTable.css("display", "");
         }, 250);
 
+
+
     });
 
+    ////// TOURNAMENT section
+
+    let tournamentLayout = $(".layout");
+    let innerLayout = $(".layout__inner");
+
+    // Array to be used to give random name of players that haven't already been used in that round
+    let playersLeftArray = playersArray;
+    let playersLeftLength = playersLeftArray.length;
+
+    // Number of total players
+    let numberOfPlayers = playersArray.length;
+
+    // Give element a random name from array above and remove that name from array
+    const giveMeRandomName = () => {
+        let arrayLength = playersLeftArray.length;
+        let indexOfName = Math.floor(Math.random() * arrayLength);
+        let nameToGive = playersLeftArray[indexOfName];
+        playersLeftArray.splice(indexOfName, 1);
+        // update number of names left to use
+        playersLeftLength = playersLeftArray.length;
+        return nameToGive;
+    };
+
+    // Create HTML pair group, give true if pair, give false if buy-in
+    const createHTMLPair = isPair => {
+        if (isPair) {
+            // Create pair
+            let groupContainer = $("<div/>")
+                .addClass("pair-container");
+            let playerOne = $("<p/>")
+                .addClass("pair-p1")
+                .text(giveMeRandomName());
+            let playerTwo = $("<p/>")
+                .addClass("pair-p2")
+                .text(giveMeRandomName());
+            groupContainer.append(playerOne).append(playerTwo);
+            return groupContainer;
+
+        } else {
+            // Create single (buy-in)
+            let container = $("<div/>")
+                .addClass("buyin-container");
+            let player = $("<p/>")
+                .addClass("single-p")
+                .text(giveMeRandomName());
+            container.append(player);
+            return container;
+
+        }
+    };
+
+    // Create round one
+    const createRoundOne = () => {
+        let roundOneContainer = $("<div/>").addClass("round-one");
+        while (playersLeftLength > 0) {
+            // if true, make pair
+            // if false, make buy in
+            roundOneContainer.append(createHTMLPair(playersLeftLength >= 2))
+        }
+        innerLayout.append(roundOneContainer);
+    };
 
 
 

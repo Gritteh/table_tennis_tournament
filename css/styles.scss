@@ -1,6 +1,6 @@
 // Colors
 $table_blue: #1565c0;
-$table_green: #1b5e20;
+$table_green: #4caf50;
 
 $teal: #00838f;
 $blue_grey: #546e7a;
@@ -27,6 +27,7 @@ $blue_grey: #546e7a;
 // General
 body {
     font-family: 'Hammersmith One', sans-serif;
+    background-color: $table_green;
 }
 h1 {
     font-size: 3.5em;
@@ -40,7 +41,7 @@ h2 {
 main {
     // background-color: $table_green;
     // background-color: #66bb6a;
-    background-color: #4caf50;
+    background-color: $table_green;
 
 }
 // page divider
@@ -174,6 +175,31 @@ main {
         }
     }
     // tournament layout below
+    .layout {
+        position: absolute;
+        width: 97%;
+        height: 400px;
+        background-color: grey;
+        .layout__inner {
+
+            .round-one {
+                .pair-container {
+
+                    .pair-p1 {
+                        color: red;
+                    }
+                    .pair-p2 {
+                        color: blue;
+                    }
+                }
+                .buyin-container {
+                    .single-p {
+                        color: pink;
+                    }
+                }
+            }
+        }
+    }
 
 }
 

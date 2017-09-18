@@ -1,5 +1,6 @@
 body {
-  font-family: 'Hammersmith One', sans-serif; }
+  font-family: 'Hammersmith One', sans-serif;
+  background-color: #4caf50; }
 
 h1 {
   font-size: 3.5em;
@@ -121,6 +122,17 @@ main {
     display: inline; }
   .tournament .tournament__title-group .tournament__back {
     background-color: #546e7a; }
+  .tournament .layout {
+    position: absolute;
+    width: 97%;
+    height: 400px;
+    background-color: grey; }
+    .tournament .layout .layout__inner .round-one .pair-container .pair-p1 {
+      color: red; }
+    .tournament .layout .layout__inner .round-one .pair-container .pair-p2 {
+      color: blue; }
+    .tournament .layout .layout__inner .round-one .buyin-container .single-p {
+      color: pink; }
 
 .winners {
   padding: 20px 20px; }
