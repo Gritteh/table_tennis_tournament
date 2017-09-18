@@ -1,6 +1,9 @@
 // Colors
 $table_blue: #1565c0;
+$table_blue_darker: #0d47a1;
 $table_green: #4caf50;
+$table_green_darker1: #43a047;
+$table_green_darker2: #2e7d32;
 
 $teal: #00838f;
 $blue_grey: #546e7a;
@@ -53,7 +56,9 @@ main {
 // Header
 .header {
     text-align: center;
-    background-color: $table_blue;
+    // background-color: $table_blue;
+    // background-image: url("../images/table-tennis-photo1.jpg");
+    background-image: linear-gradient($table_blue, $table_blue_darker);
 
     .header__title {
         padding: 10px 10px;
