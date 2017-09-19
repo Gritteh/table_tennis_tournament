@@ -8,6 +8,13 @@ $table_green_darker2: #2e7d32;
 $teal: #00838f;
 $blue_grey: #546e7a;
 
+$trim_red: #ff1744;
+$white: #ffffff;
+$off_black: #212121;
+$background_blue: #1e88e5;
+$darker_blue: #0d47a1;
+
+
 // Mixins
 @mixin title-group_inline() {
     display: inline-block;
@@ -16,9 +23,12 @@ $blue_grey: #546e7a;
 @mixin button() {
     padding: 7px 7px;
     border-radius: 5px;
-    background-color: $table_blue;
-    border: 1px solid white;
-    color: white;
+    // background-color: $table_blue;
+    background-color: $white;
+    // border: 1px solid white;
+    border: 1px solid $trim_red;
+    // color: white;
+    color: $off_black;
     font-size: 1.3em;
     &:focus {
         outline: none;
@@ -29,8 +39,10 @@ $blue_grey: #546e7a;
 }
 // General
 body {
-    font-family: 'Hammersmith One', sans-serif;
-    background-color: $table_green;
+    // font-family: 'Hammersmith One', sans-serif;
+    font-family: Avenir;
+    // background-color: $table_green;
+    background-color: $background_blue;
 }
 h1 {
     font-size: 3.5em;
@@ -44,29 +56,46 @@ h2 {
 main {
     // background-color: $table_green;
     // background-color: #66bb6a;
-    background-color: $table_green;
+    // background-color: $table_green;
+    background-color: $background_blue;
 
 }
 // page divider
 .page-divider {
     height: 3px;
     width: 100%;
-    background-color: white;
+    // background-color: white;
+    // background-color: #f57f17;
+    background-color: $trim_red;
 }
 // Header
 .header {
     text-align: center;
     // background-color: $table_blue;
     // background-image: url("../images/table-tennis-photo1.jpg");
-    background-image: linear-gradient($table_blue, $table_blue_darker);
+
+    // background-image: linear-gradient($table_blue, $table_blue_darker);
+    background-color: $white;
+
 
     .header__title {
         padding: 10px 10px;
+        color: $off_black;
     }
 }
 
 
 // Enter Players section
+.new-player:nth-child(2n) {
+    background-color: $off_black;
+    color: $white;
+}
+.new-player:nth-child(2n - 1) {
+    background-color: $white;
+    color: $off_black;
+}
+
+
 .players {
     padding: 20px 20px;
     //
@@ -112,17 +141,20 @@ main {
             margin-top: 10px;
             box-sizing: border-box;
             width: 235px;
+            border-radius: 5px;
             .new-player__name {
                 position: relative;
                 display: inline-block;
-                background-color: $player-dark-green;
+                // background-color: $player-dark-green;
+                // background-color: $darker_blue;
+                // background-color: $white;
                 // height: 30px;
                 width: 200px;
                 padding: 5px 5px;
                 text-align: center;
                 border: 1px solid black;
                 border-radius: 5px;
-                color: white;
+                // color: $off_black;
                 font-size: 1.3rem;
                 // font-weight: lighter;
                 @media (max-width: 940px) {
@@ -136,6 +168,7 @@ main {
 
 
             }
+
             .new-player__remove {
                 position: relative;
                 display: inline-block;
@@ -156,6 +189,7 @@ main {
                 }
 
             }
+
         }
     }
 }

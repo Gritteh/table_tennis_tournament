@@ -330,28 +330,35 @@ $(document).ready(function() {
     let numberToWord = ["zero", "one", "two", "three", "four", "five", "six", "seven"];
     // Function to create round 2 onwards. takes round number, no. of players, and the last "top" CSS value as arguments
     const createRoundTwoPlus = (round, players, lastTopValue) => {
+        // Find number of players in the round after this
         numberOfPlayersNextRound = giveNextTotal(players);
+
+        // Container to append, with class name of respective round
         let roundContainer = $("<div/>").addClass("round-" + numberToWord[round]);
         numberOfElements = players;
+
         if (players > 1) {
             while (numberOfElements > 0) {
+                // Create pair or buy-in of HTML
                 roundContainer.append(createHTMLPair(numberOfElements >= 2));
                 numberOfElements -= 2;
             }
         } else {
-            // create single winner
+            // Create single winner if there is 1 players
             roundContainer.append(createWinner());
         }
+        // Add to HTML
         innerLayout.prepend(roundContainer);
 
         // Working co-ordinates out
         let lastRoundHeight = $(".round-" + numberToWord[round - 1]).height();
         let currentRoundHeight = $(".round-" + numberToWord[round]).height();
 
-        // use last top value, add to calculation
+        // Use last top value and round height values to find the "top" CSS value this round
         let topValue = lastTopValue + (+lastRoundHeight - +currentRoundHeight) / 2;
         roundContainer.css("top", topValue + "px");
 
+        // If there are any players in the next round, call the function again
         if (numberOfPlayersNextRound > 0) {
             createRoundTwoPlus(round + 1, numberOfPlayersNextRound, topValue);
         }
