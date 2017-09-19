@@ -191,9 +191,9 @@ $(document).ready(function() {
 
         // Create Round 1
         createRoundOne();
-        createRoundTwo();
-        createRoundThree();
-        createRoundFour();
+        // createRoundTwo();
+        // createRoundThree();
+        // createRoundFour();
     });
 
 
@@ -280,6 +280,16 @@ $(document).ready(function() {
         }
     };
 
+    // Create Winner
+    const createWinner = () => {
+        let groupContainer = $("<div/>")
+            .addClass("winner-container");
+        let player = $("<p/>")
+            .addClass("single-winner")
+            .text(giveMeRandomName());
+        return groupContainer.append(player);
+    };
+
     // Create round one
     const createRoundOne = () => {
         // Give array the full finished array of players
@@ -296,108 +306,56 @@ $(document).ready(function() {
             roundOneContainer.append(createHTMLPair(playersLeftLength >= 2))
         }
         innerLayout.append(roundOneContainer);
+
+        let numberOfPlayersRoundTwo = giveNextTotal(numberOfPlayers);
+        createRoundTwoPlus(2, numberOfPlayersRoundTwo, -10);
     };
 
 
     // Give next round's number of names, using the previous round's number
-    const giveNextTotal = lastTotalPlayers =>
-        lastTotalPlayers % 2 === 0 ?
-            lastTotalPlayers / 2
-        :
-            ((lastTotalPlayers - 1) / 2) + 1;
-
-    // Create round 2 boxes
-
-    // number of elements in round two out of scope for round 3 creation
-    let numberOfElementsRTwo = 0;
-    // Top value of round two Container for round 3 generation
-    let topValueOfRoundTwo = 0;
-    // Display Round two
-    const createRoundTwo = () => {
-        // Find out round 2's number of elements
-        numberOfElementsRTwo = giveNextTotal(numberOfPlayers);
-        let numberOfElements = numberOfElementsRTwo;
-
-        let roundTwoContainer = $("<div/>").addClass("round-two");
-
-        while (numberOfElements > 0) {
-            roundTwoContainer.append(createHTMLPair(numberOfElements >= 2));
-            numberOfElements -= 2;
+    const giveNextTotal = lastTotalPlayers => {
+        if (lastTotalPlayers > 1) {
+            return lastTotalPlayers % 2 === 0 ?
+                lastTotalPlayers / 2
+            :
+                ((lastTotalPlayers - 1) / 2) + 1;
+        } else {
+            return 0;
         }
 
-        innerLayout.prepend(roundTwoContainer);
-
-        // working co-ordinates out
-        let roundOneHeight = $(".round-one").height();
-        let roundTwoHeight = $(".round-two").height();
-
-        let topValue = (+roundOneHeight - +roundTwoHeight) / 2 - 10;
-        roundTwoContainer.css("top", topValue + "px");
-        //
-        topValueOfRoundTwo = topValue;
 
     };
 
-    // Create round 3 boxes
-
-    // number of elements in round three
-    let numberOfElementsRThree = 0;
-    // Top value of round three container for round 4 generation
-    let topValueOfRoundThree = 0;
-    // Display round three
-    const createRoundThree = () => {
-        numberOfElementsRThree = giveNextTotal(numberOfElementsRTwo);
-        let numberOfElements = numberOfElementsRThree;
-
-        let roundThreeContainer = $("<div/>").addClass("round-three");
-
-        while (numberOfElements > 0) {
-            roundThreeContainer.append(createHTMLPair(numberOfElements >= 2));
-            numberOfElements -= 2;
+    // Set up variable to convert numbers into words for round class names
+    let numberToWord = ["zero", "one", "two", "three", "four", "five", "six", "seven"];
+    // Function to create round 2 onwards. takes round number, no. of players, and the last "top" CSS value as arguments
+    const createRoundTwoPlus = (round, players, lastTopValue) => {
+        numberOfPlayersNextRound = giveNextTotal(players);
+        let roundContainer = $("<div/>").addClass("round-" + numberToWord[round]);
+        numberOfElements = players;
+        if (players > 1) {
+            while (numberOfElements > 0) {
+                roundContainer.append(createHTMLPair(numberOfElements >= 2));
+                numberOfElements -= 2;
+            }
+        } else {
+            // create single winner
+            roundContainer.append(createWinner());
         }
+        innerLayout.prepend(roundContainer);
 
-        innerLayout.prepend(roundThreeContainer);
+        // Working co-ordinates out
+        let lastRoundHeight = $(".round-" + numberToWord[round - 1]).height();
+        let currentRoundHeight = $(".round-" + numberToWord[round]).height();
 
-        // working co-ordinates out
-        let roundTwoHeight = $(".round-two").height();
-        let roundThreeHeight = $(".round-three").height();
+        // use last top value, add to calculation
+        let topValue = lastTopValue + (+lastRoundHeight - +currentRoundHeight) / 2;
+        roundContainer.css("top", topValue + "px");
 
-        let topValue = topValueOfRoundTwo + (+roundTwoHeight - +roundThreeHeight) / 2;
-        topValueOfRoundThree = topValue;
-        roundThreeContainer.css("top", topValue + "px");
-
-    };
-
-    // Create round 4 boxes
-
-    // number of elements in round four
-    let numberOfElementsRFour = 0;
-    // Top value of round four container for round 5 generation
-    let topValueOfRoundFour = 0;
-    // Display round Four
-    const createRoundFour = () => {
-        numberOfElementsRFour = giveNextTotal(numberOfElementsRThree);
-        let numberOfElements = numberOfElementsRFour;
-
-        let roundFourContainer = $("<div/>").addClass("round-four");
-
-        while (numberOfElements > 0) {
-            roundFourContainer.append(createHTMLPair(numberOfElements >= 2));
-            numberOfElements -= 2;
+        if (numberOfPlayersNextRound > 0) {
+            createRoundTwoPlus(round + 1, numberOfPlayersNextRound, topValue);
         }
-        console.log("four_")
-        innerLayout.prepend(roundFourContainer);
-
-        // working co-ordinates out
-        let roundThreeHeight = $(".round-three").height();
-        let roundFourHeight = $(".round-four").height();
-
-        let topValue = topValueOfRoundThree + (+roundThreeHeight - +roundFourHeight) / 2;
-        topValueOfRoundFour = topValue;
-        roundFourContainer.css("top", topValue + "px");
-
     };
-
 
 
 

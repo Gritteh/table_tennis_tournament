@@ -201,6 +201,9 @@ main {
         border-radius: 5px;
         top: 0px;
     }
+    @mixin leftValueOfRound($round) {
+        left: ($round - 1) * 200 + 50px;
+    }
     .layout {
         position: absolute;
         visibility: hidden;
@@ -247,10 +250,11 @@ main {
                         @include tournamentPlayerName();
                     }
                 }
+
             }
-            .round-two {
+            .round-two, .round-three, .round-four, .round-five, .round-six, .round-seven {
                 position: absolute;
-                left: 250px;
+                // left: 250px;
                 .pair-container {
                     @include pairContainer();
                     width: 150px;
@@ -282,73 +286,26 @@ main {
                         @include tournamentPlayerName();
                     }
                 }
-            }
-            .round-three {
-                position: absolute;
-                left: 450px;
-                .pair-container {
-                    @include pairContainer();
-                    width: 150px;
-                    margin-top: 20px;
-                    .pair-p1 {
-
-                        background-color: #e0e0e0;
-                        // color: red;
-                        @include tournamentPlayerName();
-                    }
-                    .pair-p2 {
-                        background-color: #bdbdbd;
-                        color: blue;
-                        margin-top: 4px;
-                        @include tournamentPlayerName();
-                    }
-                }
-                .buyin-container {
+                .winner-container {
                     position: relative;
-                    margin-top: 10px;
                     width: 150px;
-                    height: 50px;
-                    border-radius: 5px;
-                    .single-p {
-                        height: 30px;
-                        background-color: #dce775;
-                        @include tournamentPlayerName();
-                    }
-                }
-            }
-            .round-four {
-                position: absolute;
-                left: 650px;
-                .pair-container {
-                    @include pairContainer();
-                    width: 150px;
+                    height: 30px;
                     margin-top: 20px;
-                    .pair-p1 {
 
-                        background-color: #e0e0e0;
-                        // color: red;
-                        @include tournamentPlayerName();
-                    }
-                    .pair-p2 {
-                        background-color: #bdbdbd;
-                        color: blue;
-                        margin-top: 4px;
-                        @include tournamentPlayerName();
-                    }
-                }
-                .buyin-container {
-                    position: relative;
-                    margin-top: 10px;
-                    width: 150px;
-                    height: 50px;
                     border-radius: 5px;
-                    .single-p {
+                    .single-winner {
                         height: 30px;
-                        background-color: #dce775;
+                        background-color: #e0e0e0;
                         @include tournamentPlayerName();
                     }
                 }
             }
+            .round-two {@include leftValueOfRound(2)}
+            .round-three {@include leftValueOfRound(3)}
+            .round-four {@include leftValueOfRound(4)}
+            .round-five {@include leftValueOfRound(5)}
+            .round-six {@include leftValueOfRound(6)}
+            .round-seven {@include leftValueOfRound(7)}
         }
     }
 

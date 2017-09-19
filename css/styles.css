@@ -182,162 +182,87 @@ main {
             text-align: center;
             border: 1px solid black;
             color: #1a237e; }
+      .tournament .layout .layout__inner .round-two, .tournament .layout .layout__inner .round-three, .tournament .layout .layout__inner .round-four, .tournament .layout .layout__inner .round-five, .tournament .layout .layout__inner .round-six, .tournament .layout .layout__inner .round-seven {
+        position: absolute; }
+        .tournament .layout .layout__inner .round-two .pair-container, .tournament .layout .layout__inner .round-three .pair-container, .tournament .layout .layout__inner .round-four .pair-container, .tournament .layout .layout__inner .round-five .pair-container, .tournament .layout .layout__inner .round-six .pair-container, .tournament .layout .layout__inner .round-seven .pair-container {
+          position: relative;
+          height: 64px;
+          border-radius: 5px;
+          top: 0px;
+          width: 150px;
+          margin-top: 20px; }
+          .tournament .layout .layout__inner .round-two .pair-container .pair-p1, .tournament .layout .layout__inner .round-three .pair-container .pair-p1, .tournament .layout .layout__inner .round-four .pair-container .pair-p1, .tournament .layout .layout__inner .round-five .pair-container .pair-p1, .tournament .layout .layout__inner .round-six .pair-container .pair-p1, .tournament .layout .layout__inner .round-seven .pair-container .pair-p1 {
+            background-color: #e0e0e0;
+            position: relative;
+            width: 100%;
+            height: 30px;
+            padding-top: 6px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-align: center;
+            border: 1px solid black;
+            color: #1a237e; }
+          .tournament .layout .layout__inner .round-two .pair-container .pair-p2, .tournament .layout .layout__inner .round-three .pair-container .pair-p2, .tournament .layout .layout__inner .round-four .pair-container .pair-p2, .tournament .layout .layout__inner .round-five .pair-container .pair-p2, .tournament .layout .layout__inner .round-six .pair-container .pair-p2, .tournament .layout .layout__inner .round-seven .pair-container .pair-p2 {
+            background-color: #bdbdbd;
+            color: blue;
+            margin-top: 4px;
+            position: relative;
+            width: 100%;
+            height: 30px;
+            padding-top: 6px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-align: center;
+            border: 1px solid black;
+            color: #1a237e; }
+        .tournament .layout .layout__inner .round-two .buyin-container, .tournament .layout .layout__inner .round-three .buyin-container, .tournament .layout .layout__inner .round-four .buyin-container, .tournament .layout .layout__inner .round-five .buyin-container, .tournament .layout .layout__inner .round-six .buyin-container, .tournament .layout .layout__inner .round-seven .buyin-container {
+          position: relative;
+          margin-top: 10px;
+          width: 150px;
+          height: 50px;
+          border-radius: 5px; }
+          .tournament .layout .layout__inner .round-two .buyin-container .single-p, .tournament .layout .layout__inner .round-three .buyin-container .single-p, .tournament .layout .layout__inner .round-four .buyin-container .single-p, .tournament .layout .layout__inner .round-five .buyin-container .single-p, .tournament .layout .layout__inner .round-six .buyin-container .single-p, .tournament .layout .layout__inner .round-seven .buyin-container .single-p {
+            height: 30px;
+            background-color: #dce775;
+            position: relative;
+            width: 100%;
+            height: 30px;
+            padding-top: 6px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-align: center;
+            border: 1px solid black;
+            color: #1a237e; }
+        .tournament .layout .layout__inner .round-two .winner-container, .tournament .layout .layout__inner .round-three .winner-container, .tournament .layout .layout__inner .round-four .winner-container, .tournament .layout .layout__inner .round-five .winner-container, .tournament .layout .layout__inner .round-six .winner-container, .tournament .layout .layout__inner .round-seven .winner-container {
+          position: relative;
+          width: 150px;
+          height: 30px;
+          margin-top: 20px;
+          border-radius: 5px; }
+          .tournament .layout .layout__inner .round-two .winner-container .single-winner, .tournament .layout .layout__inner .round-three .winner-container .single-winner, .tournament .layout .layout__inner .round-four .winner-container .single-winner, .tournament .layout .layout__inner .round-five .winner-container .single-winner, .tournament .layout .layout__inner .round-six .winner-container .single-winner, .tournament .layout .layout__inner .round-seven .winner-container .single-winner {
+            height: 30px;
+            background-color: #e0e0e0;
+            position: relative;
+            width: 100%;
+            height: 30px;
+            padding-top: 6px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            text-align: center;
+            border: 1px solid black;
+            color: #1a237e; }
       .tournament .layout .layout__inner .round-two {
-        position: absolute;
         left: 250px; }
-        .tournament .layout .layout__inner .round-two .pair-container {
-          position: relative;
-          height: 64px;
-          border-radius: 5px;
-          top: 0px;
-          width: 150px;
-          margin-top: 20px; }
-          .tournament .layout .layout__inner .round-two .pair-container .pair-p1 {
-            background-color: #e0e0e0;
-            position: relative;
-            width: 100%;
-            height: 30px;
-            padding-top: 6px;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            text-align: center;
-            border: 1px solid black;
-            color: #1a237e; }
-          .tournament .layout .layout__inner .round-two .pair-container .pair-p2 {
-            background-color: #bdbdbd;
-            color: blue;
-            margin-top: 4px;
-            position: relative;
-            width: 100%;
-            height: 30px;
-            padding-top: 6px;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            text-align: center;
-            border: 1px solid black;
-            color: #1a237e; }
-        .tournament .layout .layout__inner .round-two .buyin-container {
-          position: relative;
-          margin-top: 10px;
-          width: 150px;
-          height: 50px;
-          border-radius: 5px; }
-          .tournament .layout .layout__inner .round-two .buyin-container .single-p {
-            height: 30px;
-            background-color: #dce775;
-            position: relative;
-            width: 100%;
-            height: 30px;
-            padding-top: 6px;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            text-align: center;
-            border: 1px solid black;
-            color: #1a237e; }
       .tournament .layout .layout__inner .round-three {
-        position: absolute;
         left: 450px; }
-        .tournament .layout .layout__inner .round-three .pair-container {
-          position: relative;
-          height: 64px;
-          border-radius: 5px;
-          top: 0px;
-          width: 150px;
-          margin-top: 20px; }
-          .tournament .layout .layout__inner .round-three .pair-container .pair-p1 {
-            background-color: #e0e0e0;
-            position: relative;
-            width: 100%;
-            height: 30px;
-            padding-top: 6px;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            text-align: center;
-            border: 1px solid black;
-            color: #1a237e; }
-          .tournament .layout .layout__inner .round-three .pair-container .pair-p2 {
-            background-color: #bdbdbd;
-            color: blue;
-            margin-top: 4px;
-            position: relative;
-            width: 100%;
-            height: 30px;
-            padding-top: 6px;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            text-align: center;
-            border: 1px solid black;
-            color: #1a237e; }
-        .tournament .layout .layout__inner .round-three .buyin-container {
-          position: relative;
-          margin-top: 10px;
-          width: 150px;
-          height: 50px;
-          border-radius: 5px; }
-          .tournament .layout .layout__inner .round-three .buyin-container .single-p {
-            height: 30px;
-            background-color: #dce775;
-            position: relative;
-            width: 100%;
-            height: 30px;
-            padding-top: 6px;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            text-align: center;
-            border: 1px solid black;
-            color: #1a237e; }
       .tournament .layout .layout__inner .round-four {
-        position: absolute;
         left: 650px; }
-        .tournament .layout .layout__inner .round-four .pair-container {
-          position: relative;
-          height: 64px;
-          border-radius: 5px;
-          top: 0px;
-          width: 150px;
-          margin-top: 20px; }
-          .tournament .layout .layout__inner .round-four .pair-container .pair-p1 {
-            background-color: #e0e0e0;
-            position: relative;
-            width: 100%;
-            height: 30px;
-            padding-top: 6px;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            text-align: center;
-            border: 1px solid black;
-            color: #1a237e; }
-          .tournament .layout .layout__inner .round-four .pair-container .pair-p2 {
-            background-color: #bdbdbd;
-            color: blue;
-            margin-top: 4px;
-            position: relative;
-            width: 100%;
-            height: 30px;
-            padding-top: 6px;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            text-align: center;
-            border: 1px solid black;
-            color: #1a237e; }
-        .tournament .layout .layout__inner .round-four .buyin-container {
-          position: relative;
-          margin-top: 10px;
-          width: 150px;
-          height: 50px;
-          border-radius: 5px; }
-          .tournament .layout .layout__inner .round-four .buyin-container .single-p {
-            height: 30px;
-            background-color: #dce775;
-            position: relative;
-            width: 100%;
-            height: 30px;
-            padding-top: 6px;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            text-align: center;
-            border: 1px solid black;
-            color: #1a237e; }
+      .tournament .layout .layout__inner .round-five {
+        left: 850px; }
+      .tournament .layout .layout__inner .round-six {
+        left: 1050px; }
+      .tournament .layout .layout__inner .round-seven {
+        left: 1250px; }
 
 .winners {
   padding: 20px 20px; }
