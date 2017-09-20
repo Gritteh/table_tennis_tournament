@@ -77,7 +77,6 @@ main {
     // background-image: linear-gradient($table_blue, $table_blue_darker);
     background-color: $white;
 
-
     .header__title {
         padding: 10px 10px;
         color: $off_black;
@@ -86,15 +85,6 @@ main {
 
 
 // Enter Players section
-.new-player:nth-child(2n) {
-    background-color: $off_black;
-    color: $white;
-}
-.new-player:nth-child(2n - 1) {
-    background-color: $white;
-    color: $off_black;
-}
-
 
 .players {
     padding: 20px 20px;
@@ -152,9 +142,11 @@ main {
                 width: 200px;
                 padding: 5px 5px;
                 text-align: center;
-                border: 1px solid black;
+                border: 1px solid $white;
                 border-radius: 5px;
+                background-color: $darker_blue;
                 // color: $off_black;
+                color: $white;
                 font-size: 1.3rem;
                 // font-weight: lighter;
                 @media (max-width: 940px) {
@@ -168,12 +160,22 @@ main {
 
 
             }
+            .name__black { 
+                background-color: $off_black; 
+                color: $white;
+            }
+            .name__white {
+                background-color: $white;
+                color: $off_black;
+            }
 
             .new-player__remove {
                 position: relative;
                 display: inline-block;
                 background-color: $x-red;
-                border: 1px solid black;
+                color: $white;
+                // border: 1px solid black;
+                border: 1px solid $white;
                 border-radius: 5px;
                 height: 32px;
                 width: 32px;

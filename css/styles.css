@@ -26,14 +26,6 @@ main {
     padding: 10px 10px;
     color: #212121; }
 
-.new-player:nth-child(2n) {
-  background-color: #212121;
-  color: #ffffff; }
-
-.new-player:nth-child(2n - 1) {
-  background-color: #ffffff;
-  color: #212121; }
-
 .players {
   padding: 20px 20px;
   height: 500px; }
@@ -86,8 +78,10 @@ main {
         width: 200px;
         padding: 5px 5px;
         text-align: center;
-        border: 1px solid black;
+        border: 1px solid #ffffff;
         border-radius: 5px;
+        background-color: #0d47a1;
+        color: #ffffff;
         font-size: 1.3rem; }
         @media (max-width: 940px) {
           .players .players__table .new-player .new-player__name {
@@ -97,11 +91,18 @@ main {
           .players .players__table .new-player .new-player__name {
             width: 120px;
             left: -1%; } }
+      .players .players__table .new-player .name__black {
+        background-color: #212121;
+        color: #ffffff; }
+      .players .players__table .new-player .name__white {
+        background-color: #ffffff;
+        color: #212121; }
       .players .players__table .new-player .new-player__remove {
         position: relative;
         display: inline-block;
         background-color: #f44336;
-        border: 1px solid black;
+        color: #ffffff;
+        border: 1px solid #ffffff;
         border-radius: 5px;
         height: 32px;
         width: 32px;

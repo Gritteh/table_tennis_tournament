@@ -168,9 +168,9 @@ $(document).ready(function() {
             height: "0px",
             padding: "0px"
         }, 250);
-        group.css("display", "none");
-        playersTable.css("display", "none");
-        titlePlayers.css("display", "none");
+        group.css("visibility", "hidden");
+        playersTable.css("visibility", "hidden");
+        titlePlayers.css("visibility", "hidden");
 
         // Expand Tournament section
         tournamentContainer.animate({
@@ -188,7 +188,7 @@ $(document).ready(function() {
             tournamentLayout.css("visibility", "visible");
         }, 150);
 
-
+        
         // Create Round 1
         createRoundOne();
         // createRoundTwo();
@@ -217,9 +217,9 @@ $(document).ready(function() {
 
         // Delay the display of elements till after the animation is done
         setTimeout(function() {
-            titlePlayers.css("display", "");
-            group.css("display", "");
-            playersTable.css("display", "");
+            titlePlayers.css("visibility", "visible");
+            group.css("visibility", "visible");
+            playersTable.css("visibility", "visible");
         }, 250);
 
         // tournament Layout hide
@@ -298,7 +298,6 @@ $(document).ready(function() {
         numberOfPlayers = playersArray.length;
         // Give variable the number of players' names left to use
         playersLeftLength = playersLeftArray.length;
-
         let roundOneContainer = $("<div/>").addClass("round-one");
         while (playersLeftLength > 0) {
             // if true, make pair
@@ -310,7 +309,7 @@ $(document).ready(function() {
         let numberOfPlayersRoundTwo = giveNextTotal(numberOfPlayers);
         createRoundTwoPlus(2, numberOfPlayersRoundTwo, -10);
     };
-
+    
 
     // Give next round's number of names, using the previous round's number
     const giveNextTotal = lastTotalPlayers => {
@@ -325,7 +324,7 @@ $(document).ready(function() {
 
 
     };
-
+    
     // Set up variable to convert numbers into words for round class names
     let numberToWord = ["zero", "one", "two", "three", "four", "five", "six", "seven"];
     // Function to create round 2 onwards. takes round number, no. of players, and the last "top" CSS value as arguments
