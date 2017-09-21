@@ -48,6 +48,21 @@ $(document).ready(function() {
         renderGrid();
     };
 
+    // Variables to store which round it is
+    let firstRound = true;
+    let secondRound = false;
+    
+    // Expanding players table to respond to height of objects inside 
+    let playersMainContainer = $(".players");
+    
+    const givePlayersTableHeight = (screenWidth, playerNumber) => {
+        if (firstRound) {
+            let height = screenWidth > 626 ? Math.ceil(playerNumber/4) * 50 + 150 : Math.ceil(playerNumber/2) * 50 + 150;
+            playersMainContainer.css("height", height + "px");
+            playersTable.css("height", height + "px");
+        }
+    };
+
     // Adding players
     playerForm.submit(function(e) {
         // Prevent page from refreshing
@@ -108,6 +123,11 @@ $(document).ready(function() {
 
             ///
             givePlayersTableHeight(screenWidth, playersArray.length);
+        }
+
+        // if there are 2+ players, activate the done button
+        if (playersArray.length > 1) {
+            doneButton.attr("disabled", false);
         }
     });
 
@@ -175,7 +195,6 @@ $(document).ready(function() {
 
 
 
-
     // Done Button to make first section minimise
     let doneButton = $(".players__done");
 
@@ -185,11 +204,23 @@ $(document).ready(function() {
     let titlePlayers = $(".players__title");
     let pageDividerOne = $(".js_page-divider-1");
 
-    // Targetting tournament section for expanding
+    // Targetting tournament sections
     let tournamentContainer = $(".tournament");
+    let tournamentLayout = $(".layout");
+    let innerLayout = $(".layout__inner");
 
-    // Variable to store if it is first round or not
-    let notFirstRound = false;
+    // Targetting elements to show 
+    let tournamentStart = $(".tournament__start");
+
+    // Format Tournament section to respond to tournament tree height 
+    
+    const giveTournamentHeight = playerNumber => {
+        if (secondRound) {
+            let height = Math.ceil(playerNumber/2) * 80 + 150;
+            tournamentContainer.css("height", height + "px");
+            tournamentLayout.css("height", height - 140 + "px");
+        }
+    };
     
     // When done button is clicked, animate container shrinking and hide elements
     doneButton.on("click", () => {
@@ -202,9 +233,12 @@ $(document).ready(function() {
         titlePlayers.css("visibility", "hidden");
 
         // Expand Tournament section
-        tournamentContainer.animate({
-            height: "800px",
-        }, 250);
+        // tournamentContainer.animate({
+        //     height: "140px",
+        // }, 250);
+        secondRound = true;
+        giveTournamentHeight(playersArray.length);
+        console.log(playersArray.length);
 
         // Set delay for hiding of the top page divider, to make transition smoother
         setTimeout(function() {
@@ -217,29 +251,21 @@ $(document).ready(function() {
             tournamentLayout.css("visibility", "visible");
         }, 150);
 
+        tournamentStart.css("visibility", "visible");
+
         
         // Create Round 1
         createRoundOne();
         
-        notFirstRound = true;
+        firstRound = false;
     });
 
-    // Expanding players table to respond to height of objects inside 
-    let playersMainContainer = $(".players");
-
-    const givePlayersTableHeight = (screenWidth, playerNumber) => {
-        if (!notFirstRound) {
-            let height = screenWidth > 626 ? Math.ceil(playerNumber/4) * 50 + 150 : Math.ceil(playerNumber/2) * 50 + 150;
-            playersMainContainer.css("height", height + "px");
-            playersTable.css("height", height + "px");
-        }
-    };
+    
 
 
     ////// TOURNAMENT section
 
-    let tournamentLayout = $(".layout");
-    let innerLayout = $(".layout__inner");
+    
 
     // Array to be used to give random name of players that haven't already been used in that round
     let playersLeftArray = playersArray;
