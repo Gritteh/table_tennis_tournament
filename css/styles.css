@@ -16,6 +16,7 @@ main {
   background-color: #ff1744; }
 
 .header {
+  width: 100%;
   text-align: center;
   background-color: #ffffff; }
   .header .header__title {
@@ -309,21 +310,21 @@ main {
       .tournament .layout .layout__inner .round-seven {
         left: 1250px; }
 
-.winners {
-  padding: 20px 20px; }
-  .winners .winners__title-group .winners__title {
-    text-align: center; }
-  .winners .winners__reset-group .winners__reset-winners {
-    padding: 7px 7px;
-    border-radius: 5px;
-    background-color: #ffffff;
-    border: 1px solid #ff1744;
-    color: #212121;
-    font-size: 1.3em;
-    margin-top: 20px; }
-    .winners .winners__reset-group .winners__reset-winners:focus {
-      outline: none; }
-    .winners .winners__reset-group .winners__reset-winners:hover {
-      cursor: pointer; }
+.winners .winners__title-group .winners__title {
+  padding: 20px 20px;
+  text-align: center; }
+.winners .winners__reset-group .winners__reset {
+  padding: 7px 7px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: 1px solid #ff1744;
+  color: #212121;
+  font-size: 1.3em;
+  visibility: hidden;
+  margin-bottom: 20px; }
+  .winners .winners__reset-group .winners__reset:focus {
+    outline: none; }
+  .winners .winners__reset-group .winners__reset:hover {
+    cursor: pointer; }
 
 /*# sourceMappingURL=styles.css.map */

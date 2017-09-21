@@ -64,6 +64,7 @@ main {
 }
 // Header
 .header {
+    width: 100%;
     text-align: center;
     background-color: $white;
 
@@ -381,10 +382,10 @@ main {
 
 // Select Winners section
 .winners {
-    padding: 20px 20px;
 
     .winners__title-group {
         .winners__title {
+            padding: 20px 20px;
             text-align: center;
         }
         
@@ -393,9 +394,10 @@ main {
 
     }
     .winners__reset-group {
-        .winners__reset-winners {
+        .winners__reset {
             @include button();
-            margin-top: 20px;
+            visibility: hidden;
+            margin-bottom: 20px;
         }
     }
     // player v player below

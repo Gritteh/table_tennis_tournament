@@ -341,7 +341,7 @@ $(document).ready(function() {
         innerLayout.append(roundOneContainer);
 
         let numberOfPlayersRoundTwo = giveNextTotal(numberOfPlayers);
-        createRoundTwoPlus(2, numberOfPlayersRoundTwo, 5);
+        createRoundTwoPlus(2, numberOfPlayersRoundTwo, 8);
     };
     
 
@@ -397,6 +397,37 @@ $(document).ready(function() {
         }
     };
 
+
+    /// WINNERS SECTION ///
+
+    let startButton = $(".tournament__start");
+
+    let winnersSection = $(".winners");
+    let newTournament = $(".winners__reset");
+    
+    let pvpBlock = $(".pvp__block");
+
+    // Variables used just to hide 
+    let tournamentTitle = $(".tournament__title");
+    let secondPageDivider = $(".js_page-divider-2");
+
+
+    startButton.on("click", () => {
+
+        newTournament.css("visibility", "visible");
+
+        tournamentTitle.css("visibility", "hidden");
+        startButton.css("visibility", "hidden");
+        tournamentLayout.css("visibility", "hidden");
+        tournamentContainer.animate({
+            height: "0px"
+        }, 250);
+        setTimeout(() => {
+            secondPageDivider.css("display", "none");
+        }, 250);
+     
+
+    });
 
 
 
