@@ -216,7 +216,7 @@ $(document).ready(function() {
     
     const giveTournamentHeight = playerNumber => {
         if (secondRound) {
-            let height = Math.ceil(playerNumber/2) * 80 + 150;
+            let height = Math.ceil(playerNumber/2) * 80 + 160;
             tournamentContainer.css("height", height + "px");
             tournamentLayout.css("height", height - 140 + "px");
         }
@@ -249,9 +249,10 @@ $(document).ready(function() {
         setTimeout(function() {
             //// Set up for tournament display stage
             tournamentLayout.css("visibility", "visible");
+            tournamentStart.css("visibility", "visible");
+        
         }, 150);
 
-        tournamentStart.css("visibility", "visible");
 
         
         // Create Round 1
@@ -340,7 +341,7 @@ $(document).ready(function() {
         innerLayout.append(roundOneContainer);
 
         let numberOfPlayersRoundTwo = giveNextTotal(numberOfPlayers);
-        createRoundTwoPlus(2, numberOfPlayersRoundTwo, -10);
+        createRoundTwoPlus(2, numberOfPlayersRoundTwo, 5);
     };
     
 

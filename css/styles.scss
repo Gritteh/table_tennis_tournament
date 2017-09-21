@@ -208,12 +208,22 @@ main {
     }
 }
 
+@mixin playerOne() {
+    background-color: $white;
+    color: $off_black;
+}
+@mixin playerTwo() {
+    background-color: $off_black;
+    color: $white;
+    
+}
 // Your Tournament section
 .tournament {
-    padding: 20px 20px;
+    // padding: 20px 20px;
     height: 80px;
 
     .tournament__title-group {
+        padding: 20px 20px;
         .tournament__title {
             @include sectionTitle();
         }
@@ -222,8 +232,8 @@ main {
     .tournament__start-container {
         .tournament__start {
             @include button();
-            margin-top: 20px;
             visibility: hidden;
+            margin-bottom: 20px;
         }
     }
    
@@ -238,7 +248,6 @@ main {
         border-radius: 5px;
         font-size: 1.1rem;
         text-align: center;
-        border: 1px solid black;
         color: $player_indigo;
 
 
@@ -256,15 +265,19 @@ main {
         position: absolute;
         visibility: hidden;
         width: 100%;
-        left: -20px;
-        padding-left: 30px;
         height: 400px;
-        overflow: scroll;
         // background-color: grey;
         .layout__inner {
             position: relative;
-            left: 10px;
+            left: 0px;
             top: 10px;
+            margin: 0 auto;
+            border-radius: 5px;
+            width: 97%;
+            background-color: $darker_blue;
+            padding: 10px 10px;
+            overflow: scroll;
+        
 
             .round-one {
                 position: relative;
@@ -282,12 +295,15 @@ main {
                         background-color: #e0e0e0;
                         // color: red;
                         @include tournamentPlayerName();
+                        @include playerOne();
+
                     }
                     .pair-p2 {
                         background-color: #bdbdbd;
                         color: blue;
                         margin-top: 4px;
                         @include tournamentPlayerName();
+                        @include playerTwo();
                     }
                 }
                 .buyin-container {
@@ -305,7 +321,6 @@ main {
             }
             .round-two, .round-three, .round-four, .round-five, .round-six, .round-seven {
                 position: absolute;
-                // left: 250px;
                 .pair-container {
                     @include pairContainer();
                     width: 150px;
@@ -315,12 +330,14 @@ main {
                         background-color: #e0e0e0;
                         // color: red;
                         @include tournamentPlayerName();
+                        @include playerOne();
                     }
                     .pair-p2 {
                         background-color: #bdbdbd;
                         color: blue;
                         margin-top: 4px;
                         @include tournamentPlayerName();
+                        @include playerTwo();
                     }
 
 
