@@ -129,6 +129,7 @@ $(document).ready(function() {
         if (playersArray.length > 1) {
             doneButton.attr("disabled", false);
         }
+
     });
 
     // Re-render the grid, for after an element is deleted
@@ -184,6 +185,7 @@ $(document).ready(function() {
             // Add it to the HTML
             playersTable.append(newestName);
         });
+
     };
 
     // When window resizes, update screenWidth value, and re-render player list
@@ -222,6 +224,8 @@ $(document).ready(function() {
         }
     };
     
+
+
     // When done button is clicked, animate container shrinking and hide elements
     doneButton.on("click", () => {
         playersContainer.animate({
@@ -238,7 +242,6 @@ $(document).ready(function() {
         // }, 250);
         secondRound = true;
         giveTournamentHeight(playersArray.length);
-        console.log(playersArray.length);
 
         // Set delay for hiding of the top page divider, to make transition smoother
         setTimeout(function() {
@@ -252,12 +255,11 @@ $(document).ready(function() {
             tournamentStart.css("visibility", "visible");
         
         }, 150);
-
-
         
+
         // Create Round 1
         createRoundOne();
-        
+
         firstRound = false;
     });
 
@@ -269,7 +271,8 @@ $(document).ready(function() {
     
 
     // Array to be used to give random name of players that haven't already been used in that round
-    let playersLeftArray = playersArray;
+    let playersLeftArray = playersArray.slice();
+    
     let playersLeftLength = playersLeftArray.length;
 
     // Number of total players
@@ -283,6 +286,9 @@ $(document).ready(function() {
         playersLeftArray.splice(indexOfName, 1);
         // update number of names left to use
         playersLeftLength = playersLeftArray.length;
+        console.log("1" + playersArray);
+        console.log("2" + playersLeftArray)
+        
         return nameToGive;
     };
 
@@ -327,7 +333,7 @@ $(document).ready(function() {
     // Create round one
     const createRoundOne = () => {
         // Give array the full finished array of players
-        playersLeftArray = playersArray;
+        playersLeftArray = playersArray.slice();
         // Give variable the number of players
         numberOfPlayers = playersArray.length;
         // Give variable the number of players' names left to use
@@ -398,7 +404,8 @@ $(document).ready(function() {
     };
 
 
-    /// WINNERS SECTION ///
+    ////// WINNERS SECTION //////
+
 
     let startButton = $(".tournament__start");
 
@@ -425,9 +432,57 @@ $(document).ready(function() {
         setTimeout(() => {
             secondPageDivider.css("display", "none");
         }, 250);
+
+        pvpBlock.append(createRoundHtml(playersArray));
      
 
     });
+
+    const createRoundHtml = arrayOfPlayers => {
+        let tempArray = arrayOfPlayers;
+
+        let container = $("<div/>")
+            .addClass("round");
+        
+        while (tempArray.length > 1) {
+            let randNumOne = Math.floor(Math.random() * tempArray.length);
+            let randNumTwo = Math.floor(Math.random() * tempArray.length);
+            let nameOne = tempArray[randNumOne];
+            let nameTwo = tempArray[randNumTwo];
+
+            let pairingContainer = $("<div/>")
+                .addClass("round__pair");
+            let playerOne = $("<p/>")
+                .addClass("pair__name_1")
+                .text(nameOne);
+            let playerTwo = $("<p/>")
+                .addClass("pair__name_2")
+                .text(nameTwo);
+            
+            pairingContainer.append(playerOne).append(playerTwo);
+            container.append(pairingContainer);
+
+            tempArray.splice(tempArray.indexOf(nameOne), 1);
+            tempArray.splice(tempArray.indexOf(nameTwo), 1);
+        }
+
+        if (tempArray.length === 1) {
+
+            let pairingContainer = $("<div/>")
+                .addClass("round__pair");
+            let player = $("<p/>")
+                .addClass("pair__single")
+                .text(tempArray[0]);
+
+            pairingContainer.append(player);
+            container.append(pairingContainer);
+
+            tempArray.splice(0, 1);
+        }
+        
+        return container;
+        
+    };
 
 
 

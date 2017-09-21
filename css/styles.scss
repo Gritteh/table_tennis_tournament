@@ -391,7 +391,21 @@ main {
         
     }
     .pvp__block {
-
+        .round {
+            .round__pair {
+                .pair__name_1 {
+                    color: pink;
+                }
+                .pair__name_2 {
+                    color: pink;
+                    
+                }
+                .pair__single {
+                    color: pink;
+                    
+                }
+            }
+        }
     }
     .winners__reset-group {
         .winners__reset {

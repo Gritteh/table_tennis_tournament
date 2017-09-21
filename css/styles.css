@@ -313,6 +313,12 @@ main {
 .winners .winners__title-group .winners__title {
   padding: 20px 20px;
   text-align: center; }
+.winners .pvp__block .round .round__pair .pair__name_1 {
+  color: pink; }
+.winners .pvp__block .round .round__pair .pair__name_2 {
+  color: pink; }
+.winners .pvp__block .round .round__pair .pair__single {
+  color: pink; }
 .winners .winners__reset-group .winners__reset {
   padding: 7px 7px;
   border-radius: 5px;
