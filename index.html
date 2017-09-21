@@ -30,11 +30,11 @@
 
         <div class="row js_players__group">
             <!-- Form for inputting players -->
-            <form class="players__form col-sm-5 ml-auto" action="#">
-                <input class="form__input col-sm-8" type="text" placeholder="John Smith" />
-                <input class="form__add col-sm-3" type="submit" value="ADD" />
+            <form class="players__form col-8 col-sm-6 ml-auto" action="#">
+                <input class="form__input col-8 col-sm-8" type="text" placeholder="John Smith" />
+                <input class="form__add col-3 col-sm-3" type="submit" value="ADD" />
             </form>
-            <button class="players__done col-sm-2 ml-auto mr-auto" type="button">DONE</button>
+            <button class="players__done col-3 col-sm-2 ml-auto mr-auto" type="button">DONE</button>
         </div>
 
         <!-- Table of players below -->
@@ -50,10 +50,13 @@
     <section class="tournament">
         <!-- Title and buttons container -->
         <div class="tournament__title-group row">
-            <button class="tournament__back col-sm-2 ml-auto" type="button">Go Back ^</button>
-            <h2 class="tournament__title col-sm-5 ml-auto">Your Tournament</h2>
-            <button class="tournament__start col-sm-2 ml-auto mr-auto" type="button">Start!</button>
+            <!-- <button class="tournament__back col-sm-2 ml-auto" type="button">Go Back ^</button> -->
+            <h2 class="tournament__title">Your Tournament</h2>
         </div>
+        <div class="tournament__start-container row">
+            <button class="tournament__start col-4 col-sm-2 ml-auto mr-auto" type="button">Start!</button>
+        </div>
+        
 
         <!-- Tournament layout -->
         <div class="layout">
@@ -90,15 +93,21 @@
 <!-- Select Winners section -->
     <section class="winners">
         <!-- Title and buttons container -->
-        <div class="winners__title-group row">
-            <button class="winners__back col-sm-2 ml-auto" type="button">Go Back ^</button>
-            <h2 class="winners__title col-sm-5 ml-auto">Select Winners</h2>
-            <button class="winners__reset-winners col-sm-2 ml-auto mr-auto" type="button">Reset Winners</button>
+        <div class="winners__title-group">
+            <!-- <button class="winners__back col-sm-2 ml-auto" type="button">Go Back ^</button> -->
+            <h2 class="winners__title">Select Winners</h2>
         </div>
+       
 
         <!-- Player v Player below -->
+        <div class="pvp__block">
 
+        </div>
+        <!-- End of Player v Player -->
 
+        <div class="winners__reset-group row">
+            <button class="winners__reset-winners col-5 col-sm-4 ml-auto mr-auto" type="button">New Tournament</button>
+        </div>
     </section>
 
     </main> <!-- End of Main Container -->

@@ -9,13 +9,27 @@ $(document).ready(function() {
     let buttonArray = [];
     let deleteSelectorArray = [];
 
+
+    // Find width of screen for formatting players
+    let wind = $(window);
+    let screenWidth = wind.width();
     // Format an array of elements into a formatted array of elements
     const formatAll = array => array.map((box, i) => {
+        if (screenWidth > 626) {
             box.css({
                 "left": (i % 4) * 25 + 2.5 + "%",
                 "top": Math.floor(i/4) * 50 + "px"
             });
-        });
+        } else {
+            box.css({
+                "left": (i % 2) * 50 + 2.5 + "%",
+                "top": Math.floor(i/2) * 50 + "px"
+            });
+        }
+    });
+    
+   
+
 
     // Give each button element in an array good class names for targetting
     const giveAllButtonsClass = buttonArray => buttonArray.map((button, i) => button.addClass("del_button_" + i));
@@ -30,6 +44,7 @@ $(document).ready(function() {
         playersArray.splice(index, 1);
         deleteSelectorArray.splice(index, 1);
 
+        // Re-render grid function
         renderGrid();
     };
 
@@ -90,13 +105,15 @@ $(document).ready(function() {
 
             // Append onto players table
             playersTable.append(newestName);
+
+            ///
+            givePlayersTableHeight(screenWidth, playersArray.length);
         }
     });
 
-
     // Re-render the grid, for after an element is deleted
     const renderGrid = () => {
-
+        
         // Remove all HTML elements inside the container
         playersTable.children().remove();
 
@@ -149,6 +166,15 @@ $(document).ready(function() {
         });
     };
 
+    // When window resizes, update screenWidth value, and re-render player list
+    wind.resize( () => {
+        screenWidth = $(window).width();
+        renderGrid();
+        givePlayersTableHeight(screenWidth, playersArray.length + 1);
+    });
+
+
+
 
     // Done Button to make first section minimise
     let doneButton = $(".players__done");
@@ -162,6 +188,9 @@ $(document).ready(function() {
     // Targetting tournament section for expanding
     let tournamentContainer = $(".tournament");
 
+    // Variable to store if it is first round or not
+    let notFirstRound = false;
+    
     // When done button is clicked, animate container shrinking and hide elements
     doneButton.on("click", () => {
         playersContainer.animate({
@@ -191,43 +220,21 @@ $(document).ready(function() {
         
         // Create Round 1
         createRoundOne();
-        // createRoundTwo();
-        // createRoundThree();
-        // createRoundFour();
+        
+        notFirstRound = true;
     });
 
+    // Expanding players table to respond to height of objects inside 
+    let playersMainContainer = $(".players");
 
-    // "Go back" button
-    let goBackTournament = $(".tournament__back");
+    const givePlayersTableHeight = (screenWidth, playerNumber) => {
+        if (!notFirstRound) {
+            let height = screenWidth > 626 ? Math.ceil(playerNumber/4) * 50 + 150 : Math.ceil(playerNumber/2) * 50 + 150;
+            playersMainContainer.css("height", height + "px");
+            playersTable.css("height", height + "px");
+        }
+    };
 
-    // When the "Go back" button is clicked, expand the "Enter Players" section and display child elements
-    goBackTournament.on("click", () => {
-        pageDividerOne.css("display", "");
-        // Expand players container
-        playersContainer.animate({
-            height: "500px",
-            padding: "20px 20px"
-        }, 250);
-
-        // Minimise tournament section
-        tournamentContainer.animate({
-            height: "80px",
-            paadding: ""
-        }, 250);
-
-        // Delay the display of elements till after the animation is done
-        setTimeout(function() {
-            titlePlayers.css("visibility", "visible");
-            group.css("visibility", "visible");
-            playersTable.css("visibility", "visible");
-        }, 250);
-
-        // tournament Layout hide
-        tournamentLayout.css("visibility", "hidden");
-
-
-
-    });
 
     ////// TOURNAMENT section
 
