@@ -161,12 +161,12 @@ main {
                     left: -3%;
                 }
                 @media (max-width: 675px) {
-                    width: 110px;
+                    width: 120px;
                     left: -4%;
                 }
                 @media (max-width: 626px) {
                     width: 80%;
-                    left: 10%;
+                    left: -1%;
                 }
 
 
@@ -188,17 +188,22 @@ main {
                 // border: 1px solid black;
                 border: 1px solid $white;
                 border-radius: 5px;
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
                 height: 32px;
                 width: 32px;
                 // padding-top: 5px;
                 font-size: 1.3rem;
                 top: 0px;
-                left: -6px;
+                left: -10px;
                 &:focus {
                     outline: none;
                 }
                 &:hover {
                     cursor: pointer;
+                }
+                @media (max-width: 675px) {
+                    left: -12px;
                 }
                 @media (max-width: 626px) {
                     width: 0px;
@@ -400,7 +405,7 @@ main {
     border-radius: 5px;
     text-align: center;
     
-    font-size: 2em;
+    font-size: 1.7em;
     background-color: $off_black;
     color: $white;
 

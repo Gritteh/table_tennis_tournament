@@ -125,9 +125,7 @@ $(document).ready(function() {
         }
 
         // if there are 2+ players, activate the done button
-        if (playersArray.length > 1) {
-            doneButton.attr("disabled", false);
-        }
+        playersArray.length > 1 ? doneButton.attr("disabled", false) : doneButton.attr("disabled", true);
 
     });
 
@@ -183,6 +181,9 @@ $(document).ready(function() {
 
             // Add it to the HTML
             playersTable.append(newestName);
+
+            // if there are 2+ players, activate the done button
+            playersArray.length > 1 ? doneButton.attr("disabled", false) : doneButton.attr("disabled", true);
         });
 
     };

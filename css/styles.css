@@ -107,12 +107,12 @@ main {
             left: -3%; } }
         @media (max-width: 675px) {
           .players .players__table .new-player .new-player__name {
-            width: 110px;
+            width: 120px;
             left: -4%; } }
         @media (max-width: 626px) {
           .players .players__table .new-player .new-player__name {
             width: 80%;
-            left: 10%; } }
+            left: -1%; } }
       .players .players__table .new-player .name__black {
         background-color: #212121;
         color: #ffffff; }
@@ -126,15 +126,20 @@ main {
         color: #ffffff;
         border: 1px solid #ffffff;
         border-radius: 5px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
         height: 32px;
         width: 32px;
         font-size: 1.3rem;
         top: 0px;
-        left: -6px; }
+        left: -10px; }
         .players .players__table .new-player .new-player__remove:focus {
           outline: none; }
         .players .players__table .new-player .new-player__remove:hover {
           cursor: pointer; }
+        @media (max-width: 675px) {
+          .players .players__table .new-player .new-player__remove {
+            left: -12px; } }
         @media (max-width: 626px) {
           .players .players__table .new-player .new-player__remove {
             width: 0px;
@@ -332,7 +337,7 @@ main {
       width: 35%;
       border-radius: 5px;
       text-align: center;
-      font-size: 2em;
+      font-size: 1.7em;
       background-color: #212121;
       color: #ffffff;
       cursor: pointer; }
