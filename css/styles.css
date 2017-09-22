@@ -340,6 +340,9 @@ main {
     .winners .pvp__block .round .pair__single {
       background-color: #ffc400;
       color: #212121; }
+    .winners .pvp__block .round .winner__gold {
+      background-color: #ffc400;
+      color: #212121; }
 .winners .container-fluid .winners__reset-group .winners__reset {
   padding: 7px 7px;
   border-radius: 5px;

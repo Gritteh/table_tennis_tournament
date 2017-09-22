@@ -443,6 +443,9 @@ main {
                 .pair__single {
                     @include buyinPlayer();
                 }
+                .winner__gold {
+                    @include buyinPlayer();
+                }
             // }
         }
     }

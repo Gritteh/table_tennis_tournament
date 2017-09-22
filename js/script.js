@@ -510,6 +510,7 @@ $(document).ready(function() {
         }
 
         formatAllPvP(arrayOfPs);
+        givePlayersClick(arrayOfPs);
         
         return container;
         
@@ -517,28 +518,59 @@ $(document).ready(function() {
 
 
     // Positioning PvP section 
-    // let pvpOne = $(".pair__name_1");
-    // let pvpTwo = $(".pain__name_2");
-    // let pvpSingle = $(".pair__single");
+    // Position players in 2x* grid
     const formatAllPvP = arrayOfElements => {
+        let arrayLength = arrayOfElements.length;
         arrayOfElements.map((box, i) => {
-            box.css({
-                top: Math.floor(i/2) * 25 + 70 + "px",
-                left: Math.ceil(i%2) * 15 + 8 + "%"
-            });
-            if (i === arrayOfElements.length - 1) {
+            let topValue = Math.floor(i/2) * 25 + 70 + "px";
+            // If it is a buyin
+            if (i === arrayLength - 1 && arrayLength % 2 !== 0) {
                 giveBuyInFormat(box);
+                box.css("top", topValue);
+            } else {
+                // Otherwise, give normal formatting
+                box.css({
+                    top: topValue,
+                    left: Math.ceil(i%2) * 15 + 8 + "%"
+                });
             }
             
         });
+    
     };
 
+    // Buy in player gets given different format
     const giveBuyInFormat = element => {
         let elementWidthInPixels = screenWidth * 0.35; 
         let leftProp = (screenWidth - elementWidthInPixels) / 2;
         return element.css("left", leftProp + "px");
     };
 
+    const givePlayersClick = arrayOfElements => {
+        let arrayLength = arrayOfElements.length;
+        arrayOfElements.map((box, i) => {
+            let leftOrRight = i%2;
+            box.data("player", i);
+            if (i === arrayLength - 1 && arrayLength % 2 !== 0) {
+
+            } else {
+                if (leftOrRight === 0) {
+                    box.on("click", () => {
+                        box.addClass("winner__gold")
+                            .next().removeClass("winner__gold");
+                    });
+                } else {
+                    box.on("click", () => {
+                        box.addClass("winner__gold")
+                            .prev().removeClass("winner__gold");
+                    });
+                }
+            }
+                
+            
+            
+        });
+    };
 
 
 
