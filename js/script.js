@@ -74,7 +74,6 @@ $(document).ready(function() {
 
             // Add name to an array
             playersArray.push(newName);
-
             // Reset the Input text
             nameInput.val("");
 
@@ -286,34 +285,58 @@ $(document).ready(function() {
         playersLeftArray.splice(indexOfName, 1);
         // update number of names left to use
         playersLeftLength = playersLeftArray.length;
-        console.log("1" + playersArray);
-        console.log("2" + playersLeftArray)
         
         return nameToGive;
     };
 
-    // Create HTML pair group, give true if pair, give false if buy-in
-    const createHTMLPair = isPair => {
+
+    let matchUpArray = [];
+    // Create HTML pair group, give true if pair, give false if buy-in, 
+    // Second argument is if it should push names onto array, for final stage
+    const createHTMLPair = (isPair, collectMatchUps) => {
         if (isPair) {
+            // Create two names to assign
+            let nameOne = giveMeRandomName();
+            let nameTwo = giveMeRandomName();
+            console.log(nameOne, nameTwo)
+            
+            
             // Create pair
             let groupContainer = $("<div/>")
                 .addClass("pair-container");
             let playerOne = $("<p/>")
                 .addClass("pair-p1")
-                .text(giveMeRandomName());
+                .text(nameOne);
             let playerTwo = $("<p/>")
                 .addClass("pair-p2")
-                .text(giveMeRandomName());
+                .text(nameTwo);
             groupContainer.append(playerOne).append(playerTwo);
+            
+            
+            // If this function is being used to create the first round display, collect the match ups to display in Winners section
+            let playerOneText = playerOne.text();
+            let playerTwoText = playerTwo.text();
+            
+            if (collectMatchUps) {
+                // Push onto array for match ups
+                matchUpArray.push(playerOneText);
+                matchUpArray.push(playerTwoText);
+            }
+
             return groupContainer;
 
         } else {
+            let name = giveMeRandomName();
+
+            if (collectMatchUps) {
+                matchUpArray.push(name);
+            }
             // Create single (buy-in)
             let container = $("<div/>")
                 .addClass("buyin-container");
             let player = $("<p/>")
                 .addClass("single-p")
-                .text(giveMeRandomName());
+                .text(name);
             container.append(player);
             return container;
 
@@ -342,9 +365,10 @@ $(document).ready(function() {
         while (playersLeftLength > 0) {
             // if true, make pair
             // if false, make buy in
-            roundOneContainer.append(createHTMLPair(playersLeftLength >= 2))
+            roundOneContainer.append(createHTMLPair(playersLeftLength >= 2, true))
         }
         innerLayout.append(roundOneContainer);
+        console.log(roundOneContainer[0]);
 
         let numberOfPlayersRoundTwo = giveNextTotal(numberOfPlayers);
         createRoundTwoPlus(2, numberOfPlayersRoundTwo, 8);
@@ -379,7 +403,7 @@ $(document).ready(function() {
         if (players > 1) {
             while (numberOfElements > 0) {
                 // Create pair or buy-in of HTML
-                roundContainer.append(createHTMLPair(numberOfElements >= 2));
+                roundContainer.append(createHTMLPair(numberOfElements >= 2, false));
                 numberOfElements -= 2;
             }
         } else {
@@ -423,9 +447,9 @@ $(document).ready(function() {
 
         newTournament.css("visibility", "visible");
 
-        tournamentTitle.css("visibility", "hidden");
-        startButton.css("visibility", "hidden");
-        tournamentLayout.css("visibility", "hidden");
+        tournamentTitle.css("display", "none");
+        startButton.css("display", "none");
+        tournamentLayout.css("display", "none");
         tournamentContainer.animate({
             height: "0px"
         }, 250);
@@ -433,37 +457,40 @@ $(document).ready(function() {
             secondPageDivider.css("display", "none");
         }, 250);
 
-        pvpBlock.append(createRoundHtml(playersArray));
+        pvpBlock.append(createRoundHtml(matchUpArray));
      
 
     });
 
+    // Array of single player elements
+    let arrayOfPs = [];
+    // Create a group of HTML for a round 
     const createRoundHtml = arrayOfPlayers => {
-        let tempArray = arrayOfPlayers;
+
+        let tempArray = arrayOfPlayers.slice();
 
         let container = $("<div/>")
             .addClass("round");
         
         while (tempArray.length > 1) {
-            let randNumOne = Math.floor(Math.random() * tempArray.length);
-            let randNumTwo = Math.floor(Math.random() * tempArray.length);
-            let nameOne = tempArray[randNumOne];
-            let nameTwo = tempArray[randNumTwo];
+            // Keep pairings and get names
+            let nameOne = tempArray[0];
+            let nameTwo = tempArray[1];
 
-            let pairingContainer = $("<div/>")
-                .addClass("round__pair");
             let playerOne = $("<p/>")
                 .addClass("pair__name_1")
                 .text(nameOne);
             let playerTwo = $("<p/>")
                 .addClass("pair__name_2")
                 .text(nameTwo);
-            
-            pairingContainer.append(playerOne).append(playerTwo);
-            container.append(pairingContainer);
 
-            tempArray.splice(tempArray.indexOf(nameOne), 1);
-            tempArray.splice(tempArray.indexOf(nameTwo), 1);
+            arrayOfPs.push(playerOne);
+            arrayOfPs.push(playerTwo);
+            
+            container.append(playerOne).append(playerTwo);
+
+            // Remove names used
+            tempArray.splice(0, 2);
         }
 
         if (tempArray.length === 1) {
@@ -474,15 +501,45 @@ $(document).ready(function() {
                 .addClass("pair__single")
                 .text(tempArray[0]);
 
+            arrayOfPs.push(player);
+
             pairingContainer.append(player);
             container.append(pairingContainer);
 
             tempArray.splice(0, 1);
         }
+
+        formatAllPvP(arrayOfPs);
         
         return container;
         
     };
+
+
+    // Positioning PvP section 
+    // let pvpOne = $(".pair__name_1");
+    // let pvpTwo = $(".pain__name_2");
+    // let pvpSingle = $(".pair__single");
+    const formatAllPvP = arrayOfElements => {
+        arrayOfElements.map((box, i) => {
+            box.css({
+                top: Math.floor(i/2) * 25 + 70 + "px",
+                left: Math.ceil(i%2) * 15 + 8 + "%"
+            });
+            if (i === arrayOfElements.length - 1) {
+                giveBuyInFormat(box);
+            }
+            
+        });
+    };
+
+    const giveBuyInFormat = element => {
+        let elementWidthInPixels = screenWidth * 0.35; 
+        let leftProp = (screenWidth - elementWidthInPixels) / 2;
+        return element.css("left", leftProp + "px");
+    };
+
+
 
 
 

@@ -81,7 +81,7 @@ main {
       @media (max-width: 626px) {
         .players .players__table .new-player {
           width: 0px;
-          width: 40%; } }
+          width: 50%; } }
       .players .players__table .new-player .new-player__name {
         position: relative;
         display: inline-block;
@@ -148,7 +148,7 @@ main {
       margin: 0 auto;
       text-align: center;
       font-size: 2.5em; }
-  .tournament .tournament__start-container .tournament__start {
+  .tournament .container-fluid .tournament__start-container .tournament__start {
     padding: 7px 7px;
     border-radius: 5px;
     background-color: #ffffff;
@@ -157,9 +157,9 @@ main {
     font-size: 1.3em;
     visibility: hidden;
     margin-bottom: 20px; }
-    .tournament .tournament__start-container .tournament__start:focus {
+    .tournament .container-fluid .tournament__start-container .tournament__start:focus {
       outline: none; }
-    .tournament .tournament__start-container .tournament__start:hover {
+    .tournament .container-fluid .tournament__start-container .tournament__start:hover {
       cursor: pointer; }
   .tournament .layout {
     position: absolute;
@@ -195,7 +195,6 @@ main {
             border-radius: 5px;
             font-size: 1.1rem;
             text-align: center;
-            color: #1a237e;
             background-color: #ffffff;
             color: #212121; }
           .tournament .layout .layout__inner .round-one .pair-container .pair-p2 {
@@ -209,7 +208,6 @@ main {
             border-radius: 5px;
             font-size: 1.1rem;
             text-align: center;
-            color: #1a237e;
             background-color: #212121;
             color: #ffffff; }
         .tournament .layout .layout__inner .round-one .buyin-container {
@@ -227,7 +225,8 @@ main {
             border-radius: 5px;
             font-size: 1.1rem;
             text-align: center;
-            color: #1a237e; }
+            background-color: #ffc400;
+            color: #212121; }
       .tournament .layout .layout__inner .round-two, .tournament .layout .layout__inner .round-three, .tournament .layout .layout__inner .round-four, .tournament .layout .layout__inner .round-five, .tournament .layout .layout__inner .round-six, .tournament .layout .layout__inner .round-seven {
         position: absolute; }
         .tournament .layout .layout__inner .round-two .pair-container, .tournament .layout .layout__inner .round-three .pair-container, .tournament .layout .layout__inner .round-four .pair-container, .tournament .layout .layout__inner .round-five .pair-container, .tournament .layout .layout__inner .round-six .pair-container, .tournament .layout .layout__inner .round-seven .pair-container {
@@ -246,7 +245,6 @@ main {
             border-radius: 5px;
             font-size: 1.1rem;
             text-align: center;
-            color: #1a237e;
             background-color: #ffffff;
             color: #212121; }
           .tournament .layout .layout__inner .round-two .pair-container .pair-p2, .tournament .layout .layout__inner .round-three .pair-container .pair-p2, .tournament .layout .layout__inner .round-four .pair-container .pair-p2, .tournament .layout .layout__inner .round-five .pair-container .pair-p2, .tournament .layout .layout__inner .round-six .pair-container .pair-p2, .tournament .layout .layout__inner .round-seven .pair-container .pair-p2 {
@@ -260,7 +258,6 @@ main {
             border-radius: 5px;
             font-size: 1.1rem;
             text-align: center;
-            color: #1a237e;
             background-color: #212121;
             color: #ffffff; }
         .tournament .layout .layout__inner .round-two .buyin-container, .tournament .layout .layout__inner .round-three .buyin-container, .tournament .layout .layout__inner .round-four .buyin-container, .tournament .layout .layout__inner .round-five .buyin-container, .tournament .layout .layout__inner .round-six .buyin-container, .tournament .layout .layout__inner .round-seven .buyin-container {
@@ -279,7 +276,8 @@ main {
             border-radius: 5px;
             font-size: 1.1rem;
             text-align: center;
-            color: #1a237e; }
+            background-color: #ffc400;
+            color: #212121; }
         .tournament .layout .layout__inner .round-two .winner-container, .tournament .layout .layout__inner .round-three .winner-container, .tournament .layout .layout__inner .round-four .winner-container, .tournament .layout .layout__inner .round-five .winner-container, .tournament .layout .layout__inner .round-six .winner-container, .tournament .layout .layout__inner .round-seven .winner-container {
           position: relative;
           width: 150px;
@@ -296,7 +294,8 @@ main {
             border-radius: 5px;
             font-size: 1.1rem;
             text-align: center;
-            color: #1a237e; }
+            background-color: #ffc400;
+            color: #212121; }
       .tournament .layout .layout__inner .round-two {
         left: 250px; }
       .tournament .layout .layout__inner .round-three {
@@ -313,13 +312,35 @@ main {
 .winners .winners__title-group .winners__title {
   padding: 20px 20px;
   text-align: center; }
-.winners .pvp__block .round .round__pair .pair__name_1 {
-  color: pink; }
-.winners .pvp__block .round .round__pair .pair__name_2 {
-  color: pink; }
-.winners .pvp__block .round .round__pair .pair__single {
-  color: pink; }
-.winners .winners__reset-group .winners__reset {
+.winners .pvp__block {
+  position: absolute;
+  width: 100%; }
+  .winners .pvp__block .round {
+    position: relative;
+    width: 100%;
+    margin: 0 auto; }
+    .winners .pvp__block .round .pair__name_1, .winners .pvp__block .round .pair__name_2, .winners .pvp__block .round .pair__single {
+      position: relative;
+      display: inline-block;
+      padding: 20px 20px;
+      height: 70px;
+      width: 35%;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 2em;
+      background-color: #212121;
+      color: #ffffff;
+      cursor: pointer; }
+    .winners .pvp__block .round .pair__name_1 {
+      background-color: #ffffff;
+      color: #212121; }
+    .winners .pvp__block .round .pair__name_2 {
+      background-color: #212121;
+      color: #ffffff; }
+    .winners .pvp__block .round .pair__single {
+      background-color: #ffc400;
+      color: #212121; }
+.winners .container-fluid .winners__reset-group .winners__reset {
   padding: 7px 7px;
   border-radius: 5px;
   background-color: #ffffff;
@@ -328,9 +349,9 @@ main {
   font-size: 1.3em;
   visibility: hidden;
   margin-bottom: 20px; }
-  .winners .winners__reset-group .winners__reset:focus {
+  .winners .container-fluid .winners__reset-group .winners__reset:focus {
     outline: none; }
-  .winners .winners__reset-group .winners__reset:hover {
+  .winners .container-fluid .winners__reset-group .winners__reset:hover {
     cursor: pointer; }
 
 /*# sourceMappingURL=styles.css.map */

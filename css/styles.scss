@@ -14,6 +14,8 @@ $off_black: #212121;
 $background_blue: #1e88e5;
 $darker_blue: #0d47a1;
 
+$ball_orange: #ffc400;
+
 
 // Mixins
 @mixin title-group_inline() {
@@ -131,7 +133,7 @@ main {
             border-radius: 5px;
             @media (max-width: 626px) {
                 width: 0px;
-                width: 40%;
+                width: 50%;
             }
             .new-player__name {
                 position: relative;
@@ -218,6 +220,10 @@ main {
     color: $white;
     
 }
+@mixin buyinPlayer() {
+    background-color: $ball_orange;
+    color: $off_black;
+}
 // Your Tournament section
 .tournament {
     // padding: 20px 20px;
@@ -230,16 +236,18 @@ main {
         }
         
     }
-    .tournament__start-container {
-        .tournament__start {
-            @include button();
-            visibility: hidden;
-            margin-bottom: 20px;
+    .container-fluid {
+        .tournament__start-container {
+            .tournament__start {
+                @include button();
+                visibility: hidden;
+                margin-bottom: 20px;
+            }
         }
     }
    
+   
     // tournament layout below
-    $player_indigo: #1a237e;
 
     @mixin tournamentPlayerName() {
         position: relative;
@@ -249,7 +257,6 @@ main {
         border-radius: 5px;
         font-size: 1.1rem;
         text-align: center;
-        color: $player_indigo;
 
 
     }
@@ -316,6 +323,7 @@ main {
                     .single-p {
                         background-color: #dce775;
                         @include tournamentPlayerName();
+                        @include buyinPlayer();
                     }
                 }
 
@@ -353,6 +361,7 @@ main {
                         height: 30px;
                         background-color: #dce775;
                         @include tournamentPlayerName();
+                        @include buyinPlayer();
                     }
                 }
                 .winner-container {
@@ -366,6 +375,7 @@ main {
                         height: 30px;
                         background-color: #e0e0e0;
                         @include tournamentPlayerName();
+                        @include buyinPlayer();
                     }
                 }
             }
@@ -381,6 +391,24 @@ main {
 }
 
 // Select Winners section
+@mixin winnerPairName() {
+    position: relative;
+    display: inline-block;
+    padding: 20px 20px;
+    height: 70px;
+    width: 35%;
+    border-radius: 5px;
+    text-align: center;
+    
+    font-size: 2em;
+    background-color: $off_black;
+    color: $white;
+
+}
+
+@mixin hoverPointer() {
+    cursor: pointer;
+}
 .winners {
 
     .winners__title-group {
@@ -391,29 +419,43 @@ main {
         
     }
     .pvp__block {
+        position: absolute;
+        width: 100%;
         .round {
-            .round__pair {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+
+            // .round__pair {
+                // position: relative;
+                // width: 100%;
+                // margin-top: 30px;
+                .pair__name_1, .pair__name_2, .pair__single {
+                    @include winnerPairName();
+                    @include hoverPointer();
+                }
                 .pair__name_1 {
-                    color: pink;
+                    @include playerOne();
                 }
                 .pair__name_2 {
-                    color: pink;
-                    
+                    @include playerTwo();
                 }
                 .pair__single {
-                    color: pink;
-                    
+                    @include buyinPlayer();
                 }
+            // }
+        }
+    }
+    .container-fluid {
+        .winners__reset-group {
+            .winners__reset {
+                @include button();
+                visibility: hidden;
+                margin-bottom: 20px;
             }
         }
     }
-    .winners__reset-group {
-        .winners__reset {
-            @include button();
-            visibility: hidden;
-            margin-bottom: 20px;
-        }
-    }
+   
     // player v player below
 
 }
