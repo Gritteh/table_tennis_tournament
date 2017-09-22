@@ -457,20 +457,29 @@ $(document).ready(function() {
             secondPageDivider.css("display", "none");
         }, 250);
 
-        pvpBlock.append(createRoundHtml(matchUpArray));
+        pvpBlock.append(createRoundHtml(matchUpArray, 1));
      
 
     });
 
     // Array of single player elements
     let arrayOfPs = [];
+    let numberOfCurrentPlayers = 0;
+    let roundNumber = 1;
     // Create a group of HTML for a round 
-    const createRoundHtml = arrayOfPlayers => {
+    const createRoundHtml = (arrayOfPlayers, roundNumber) => {
+        arrayOfPs = [];
 
         let tempArray = arrayOfPlayers.slice();
 
         let container = $("<div/>")
-            .addClass("round");
+            .addClass("round-" + roundNumber);
+
+        let roundTitle = $("<div/>")
+            .addClass("round__title")
+            .text("Round " + roundNumber);
+        
+        container.append(roundTitle);
         
         while (tempArray.length > 1) {
             // Keep pairings and get names
@@ -495,23 +504,25 @@ $(document).ready(function() {
 
         if (tempArray.length === 1) {
 
-            let pairingContainer = $("<div/>")
-                .addClass("round__pair");
             let player = $("<p/>")
-                .addClass("pair__single")
+                .addClass("pair__single winner__gold")
                 .text(tempArray[0]);
 
             arrayOfPs.push(player);
 
-            pairingContainer.append(player);
-            container.append(pairingContainer);
+            container.append(player);
 
             tempArray.splice(0, 1);
         }
 
+        let lastIndex = arrayOfPlayers.length - 1;
+        let heightValue = Math.floor(lastIndex / 2) * 95 + 180 + "px";
+        container.css("height", heightValue);
+
         formatAllPvP(arrayOfPs);
         givePlayersClick(arrayOfPs);
         
+        numberOfCurrentPlayers = arrayOfPlayers.length;
         return container;
         
     };
@@ -522,11 +533,15 @@ $(document).ready(function() {
     const formatAllPvP = arrayOfElements => {
         let arrayLength = arrayOfElements.length;
         arrayOfElements.map((box, i) => {
-            let topValue = Math.floor(i/2) * 25 + 70 + "px";
+            let topValue = Math.floor(i/2) * 25 + 30 + "px";
             // If it is a buyin
             if (i === arrayLength - 1 && arrayLength % 2 !== 0) {
-                giveBuyInFormat(box);
-                box.css("top", topValue);
+                // giveBuyInFormat(box);
+                box.css({
+                    left: (100 - 35) / 2 + "%",
+                    top: topValue
+                });
+                
             } else {
                 // Otherwise, give normal formatting
                 box.css({
@@ -536,16 +551,10 @@ $(document).ready(function() {
             }
             
         });
-    
+        
     };
 
-    // Buy in player gets given different format
-    const giveBuyInFormat = element => {
-        let elementWidthInPixels = screenWidth * 0.35; 
-        let leftProp = (screenWidth - elementWidthInPixels) / 2;
-        return element.css("left", leftProp + "px");
-    };
-
+    // Give player elements click functions
     const givePlayersClick = arrayOfElements => {
         let arrayLength = arrayOfElements.length;
         arrayOfElements.map((box, i) => {
@@ -556,13 +565,22 @@ $(document).ready(function() {
             } else {
                 if (leftOrRight === 0) {
                     box.on("click", () => {
-                        box.addClass("winner__gold")
-                            .next().removeClass("winner__gold");
+                        if (!box.hasClass("winner__gold")) {
+                            box.addClass("winner__gold")
+                                .next().removeClass("winner__gold");
+                            checkForRoundFinish(arrayOfElements);
+                        }
+                       
                     });
                 } else {
+
                     box.on("click", () => {
-                        box.addClass("winner__gold")
-                            .prev().removeClass("winner__gold");
+                        if (!box.hasClass("winner__gold")) {
+                            box.addClass("winner__gold")
+                                .prev().removeClass("winner__gold");
+                            checkForRoundFinish(arrayOfElements);
+                        }
+                            
                     });
                 }
             }
@@ -572,7 +590,27 @@ $(document).ready(function() {
         });
     };
 
-
-
+    let arrayOfNamesNextRound = [];
+    const checkForRoundFinish = arrayOfElements => {
+        arrayOfNamesNextRound = [];
+        // let currentRound = pvpBlock.children().last()[0];
+        // console.log(currentRound.length);
+        // for (let i = 0; i < numberOfCurrentPlayers; i++) {
+        //     currentRound[i].hasClass("winner__gold") ? console.log("has class") : console.log("no class"); 
+        // }
+        let numberOfCurrent = arrayOfElements.length;
+        let numberOfWinnersNeeded = numberOfCurrent % 2 === 0 ? numberOfCurrent / 2 : (numberOfCurrent - 1) / 2 + 1;
+        for (let i = 0; i < numberOfCurrent; i++) {
+            if (arrayOfElements[i].hasClass("winner__gold")) {
+                arrayOfNamesNextRound.push(arrayOfElements[i].text());
+            } 
+        }
+        if (arrayOfNamesNextRound.length === numberOfWinnersNeeded) {
+            // NEXT ROUND 
+            roundNumber++;
+            pvpBlock.append(createRoundHtml(arrayOfNamesNextRound, roundNumber));
+        }
+    };
+    
 
 });

@@ -314,12 +314,17 @@ main {
   text-align: center; }
 .winners .pvp__block {
   position: absolute;
-  width: 100%; }
-  .winners .pvp__block .round {
+  width: 100%;
+  top: 220px; }
+  .winners .pvp__block .round-1, .winners .pvp__block .round-2, .winners .pvp__block .round-3, .winners .pvp__block .round-4, .winners .pvp__block .round-5, .winners .pvp__block .round-6, .winners .pvp__block .round-7 {
     position: relative;
     width: 100%;
     margin: 0 auto; }
-    .winners .pvp__block .round .pair__name_1, .winners .pvp__block .round .pair__name_2, .winners .pvp__block .round .pair__single {
+    .winners .pvp__block .round-1 .round__title, .winners .pvp__block .round-2 .round__title, .winners .pvp__block .round-3 .round__title, .winners .pvp__block .round-4 .round__title, .winners .pvp__block .round-5 .round__title, .winners .pvp__block .round-6 .round__title, .winners .pvp__block .round-7 .round__title {
+      font-size: 2.5em;
+      text-align: center;
+      color: #ffffff; }
+    .winners .pvp__block .round-1 .pair__name_1, .winners .pvp__block .round-1 .pair__name_2, .winners .pvp__block .round-1 .pair__single, .winners .pvp__block .round-2 .pair__name_1, .winners .pvp__block .round-2 .pair__name_2, .winners .pvp__block .round-2 .pair__single, .winners .pvp__block .round-3 .pair__name_1, .winners .pvp__block .round-3 .pair__name_2, .winners .pvp__block .round-3 .pair__single, .winners .pvp__block .round-4 .pair__name_1, .winners .pvp__block .round-4 .pair__name_2, .winners .pvp__block .round-4 .pair__single, .winners .pvp__block .round-5 .pair__name_1, .winners .pvp__block .round-5 .pair__name_2, .winners .pvp__block .round-5 .pair__single, .winners .pvp__block .round-6 .pair__name_1, .winners .pvp__block .round-6 .pair__name_2, .winners .pvp__block .round-6 .pair__single, .winners .pvp__block .round-7 .pair__name_1, .winners .pvp__block .round-7 .pair__name_2, .winners .pvp__block .round-7 .pair__single {
       position: relative;
       display: inline-block;
       padding: 20px 20px;
@@ -331,16 +336,16 @@ main {
       background-color: #212121;
       color: #ffffff;
       cursor: pointer; }
-    .winners .pvp__block .round .pair__name_1 {
+    .winners .pvp__block .round-1 .pair__name_1, .winners .pvp__block .round-2 .pair__name_1, .winners .pvp__block .round-3 .pair__name_1, .winners .pvp__block .round-4 .pair__name_1, .winners .pvp__block .round-5 .pair__name_1, .winners .pvp__block .round-6 .pair__name_1, .winners .pvp__block .round-7 .pair__name_1 {
       background-color: #ffffff;
       color: #212121; }
-    .winners .pvp__block .round .pair__name_2 {
+    .winners .pvp__block .round-1 .pair__name_2, .winners .pvp__block .round-2 .pair__name_2, .winners .pvp__block .round-3 .pair__name_2, .winners .pvp__block .round-4 .pair__name_2, .winners .pvp__block .round-5 .pair__name_2, .winners .pvp__block .round-6 .pair__name_2, .winners .pvp__block .round-7 .pair__name_2 {
       background-color: #212121;
       color: #ffffff; }
-    .winners .pvp__block .round .pair__single {
+    .winners .pvp__block .round-1 .pair__single, .winners .pvp__block .round-2 .pair__single, .winners .pvp__block .round-3 .pair__single, .winners .pvp__block .round-4 .pair__single, .winners .pvp__block .round-5 .pair__single, .winners .pvp__block .round-6 .pair__single, .winners .pvp__block .round-7 .pair__single {
       background-color: #ffc400;
       color: #212121; }
-    .winners .pvp__block .round .winner__gold {
+    .winners .pvp__block .round-1 .winner__gold, .winners .pvp__block .round-2 .winner__gold, .winners .pvp__block .round-3 .winner__gold, .winners .pvp__block .round-4 .winner__gold, .winners .pvp__block .round-5 .winner__gold, .winners .pvp__block .round-6 .winner__gold, .winners .pvp__block .round-7 .winner__gold {
       background-color: #ffc400;
       color: #212121; }
 .winners .container-fluid .winners__reset-group .winners__reset {

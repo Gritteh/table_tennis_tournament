@@ -421,7 +421,8 @@ main {
     .pvp__block {
         position: absolute;
         width: 100%;
-        .round {
+        top: 220px;
+        .round-1, .round-2, .round-3, .round-4, .round-5, .round-6, .round-7 {
             position: relative;
             width: 100%;
             margin: 0 auto;
@@ -430,6 +431,11 @@ main {
                 // position: relative;
                 // width: 100%;
                 // margin-top: 30px;
+                .round__title {
+                    font-size: 2.5em;
+                    text-align: center;
+                    color: $white;
+                }
                 .pair__name_1, .pair__name_2, .pair__single {
                     @include winnerPairName();
                     @include hoverPointer();
