@@ -561,29 +561,38 @@ $(document).ready(function() {
         arrayOfElements.map((box, i) => {
             let leftOrRight = i%2;
             box.data("player", i);
-            if (i === arrayLength - 1 && arrayLength % 2 !== 0) {
-
-            } else {
+            if (!(i === arrayLength - 1 && arrayLength % 2 !== 0)) {
+                
                 if (leftOrRight === 0) {
                     box.on("click", () => {
-                        if (!box.hasClass("winner__gold")) {
-                            box.addClass("winner__gold")
-                                .next().removeClass("winner__gold");
-                            checkForRoundFinish(arrayOfElements);
+
+                        if (box.parent().hasClass("round-" + roundNumber)) {
+
+                            if (!box.hasClass("winner__gold")) {
+                                box.addClass("winner__gold")
+                                    .next().removeClass("winner__gold");
+                                checkForRoundFinish(arrayOfElements, box);
+                            }
                         }
                        
                     });
+
                 } else {
 
                     box.on("click", () => {
-                        if (!box.hasClass("winner__gold")) {
-                            box.addClass("winner__gold")
-                                .prev().removeClass("winner__gold");
-                            checkForRoundFinish(arrayOfElements);
+                        if (box.parent().hasClass("round-" + roundNumber)) {
+                            
+                            if (!box.hasClass("winner__gold")) {
+                                box.addClass("winner__gold")
+                                    .prev().removeClass("winner__gold");
+                                checkForRoundFinish(arrayOfElements, box);
+                            }
+
                         }
                             
                     });
                 }
+
             }
                 
             
@@ -591,14 +600,22 @@ $(document).ready(function() {
         });
     };
 
+    // Takes array and gives array back, in a random order
+    const randomiseMatchUps = (arrayOfNames) => {
+        let tempArray = arrayOfNames.slice();
+        let newArray = [];
+        for (let i = 0; i < arrayOfNames.length; i++) {
+            let randomNumber = Math.floor(Math.random() * tempArray.length);
+            newArray.push(tempArray[randomNumber]);
+            tempArray.splice(randomNumber, 1);
+        }
+        return newArray;
+    };
+
+    // Function that is called on click, it checks if the next round should be generated
     let arrayOfNamesNextRound = [];
-    const checkForRoundFinish = arrayOfElements => {
+    const checkForRoundFinish = (arrayOfElements, element) => {
         arrayOfNamesNextRound = [];
-        // let currentRound = pvpBlock.children().last()[0];
-        // console.log(currentRound.length);
-        // for (let i = 0; i < numberOfCurrentPlayers; i++) {
-        //     currentRound[i].hasClass("winner__gold") ? console.log("has class") : console.log("no class"); 
-        // }
         let numberOfCurrent = arrayOfElements.length;
         let numberOfWinnersNeeded = numberOfCurrent % 2 === 0 ? numberOfCurrent / 2 : (numberOfCurrent - 1) / 2 + 1;
         for (let i = 0; i < numberOfCurrent; i++) {
@@ -609,7 +626,7 @@ $(document).ready(function() {
         if (arrayOfNamesNextRound.length === numberOfWinnersNeeded) {
             // NEXT ROUND 
             roundNumber++;
-            pvpBlock.append(createRoundHtml(arrayOfNamesNextRound, roundNumber));
+            pvpBlock.append(createRoundHtml(randomiseMatchUps(arrayOfNamesNextRound), roundNumber));
         }
     };
     
