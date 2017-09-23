@@ -444,6 +444,7 @@ $(document).ready(function() {
     let secondPageDivider = $(".js_page-divider-2");
 
 
+    // When start button is clicked
     startButton.on("click", () => {
 
         newTournament.css("visibility", "visible");

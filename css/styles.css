@@ -20,7 +20,7 @@ main {
   text-align: center;
   background-color: #ffffff; }
   .header .header__title {
-    padding: 10px 10px;
+    padding: 30px 30px;
     color: #212121;
     font-size: 3.5em; }
     @media (max-width: 440px) {
@@ -66,7 +66,7 @@ main {
         cursor: pointer; }
   .players .players__table {
     position: absolute;
-    top: 210px;
+    top: 250px;
     left: 0px;
     width: 100%;
     height: 150px;
@@ -320,11 +320,16 @@ main {
 .winners .pvp__block {
   position: absolute;
   width: 100%;
-  top: 220px; }
+  top: 260px; }
   .winners .pvp__block .round-1, .winners .pvp__block .round-2, .winners .pvp__block .round-3, .winners .pvp__block .round-4, .winners .pvp__block .round-5, .winners .pvp__block .round-6, .winners .pvp__block .round-7 {
     position: relative;
-    width: 100%;
-    margin: 0 auto; }
+    width: 97%;
+    padding: 20px 10px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #0d47a1; }
     .winners .pvp__block .round-1 .round__title, .winners .pvp__block .round-2 .round__title, .winners .pvp__block .round-3 .round__title, .winners .pvp__block .round-4 .round__title, .winners .pvp__block .round-5 .round__title, .winners .pvp__block .round-6 .round__title, .winners .pvp__block .round-7 .round__title {
       font-size: 2.5em;
       text-align: center;
