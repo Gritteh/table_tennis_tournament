@@ -457,10 +457,11 @@ $(document).ready(function() {
         }, 250);
         setTimeout(() => {
             secondPageDivider.css("display", "none");
+            pvpBlock.append(createRoundHtml(matchUpArray, 1));
+            addBat();
         }, 250);
 
-        pvpBlock.append(createRoundHtml(matchUpArray, 1));
-        addBat();
+        
         
 
     });
