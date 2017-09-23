@@ -63,6 +63,9 @@ $(document).ready(function() {
         }
     };
 
+    // Elipsis on end of name if too long 
+    const elipsisPlayers = name => name.length > 14 ? name.substr(0, 14) + "..." : name;
+
     // Adding players
     playerForm.submit(function(e) {
         // Prevent page from refreshing
@@ -94,7 +97,7 @@ $(document).ready(function() {
             buttonArray.push(button);
 
             // Make the <p> element's text the new player's name
-            name.text(newName);
+            name.text(elipsisPlayers(newName));
 
             // A new array of buttons but with sequential class names
             let finalButtonArray = giveAllButtonsClass(buttonArray);
@@ -157,7 +160,7 @@ $(document).ready(function() {
             buttonArray.push(button);
 
             // Setting name as element text
-            name.text(playersArray[i]);
+            name.text(elipsisPlayers(playersArray[i]));
 
             // Giving buttons targetable class names
             let finalButtonArray = giveAllButtonsClass(buttonArray);
@@ -666,5 +669,11 @@ $(document).ready(function() {
             lastRound.find(".round__title").removeClass("title__active");
         }
     };
+
+
+    // Refresh page on click
+    newTournament.on("click", () => {
+        window.location.reload();
+    });
 
 });
