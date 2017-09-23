@@ -468,11 +468,13 @@ $(document).ready(function() {
 
     // Array of single player elements
     let arrayOfPs = [];
+    let arrayOfVersus = [];
     let numberOfCurrentPlayers = 0;
     let roundNumber = 1;
     // Create a group of HTML for a round 
     const createRoundHtml = (arrayOfPlayers, roundNumber) => {
         arrayOfPs = [];
+        arrayOfVersus = [];
 
         let tempArray = arrayOfPlayers.slice();
 
@@ -490,6 +492,9 @@ $(document).ready(function() {
             let nameOne = tempArray[0];
             let nameTwo = tempArray[1];
 
+            let versus = $("<div/>")
+                .addClass("round__vs")
+                .text("VS");
             let playerOne = $("<p/>")
                 .addClass("pair__name_1")
                 .text(nameOne);
@@ -499,8 +504,9 @@ $(document).ready(function() {
 
             arrayOfPs.push(playerOne);
             arrayOfPs.push(playerTwo);
-            
-            container.append(playerOne).append(playerTwo);
+            arrayOfVersus.push(versus);
+
+            container.append(playerOne).append(playerTwo).append(versus);
 
             // Remove names used
             tempArray.splice(0, 2);
@@ -523,6 +529,7 @@ $(document).ready(function() {
         let heightValue = Math.floor(lastIndex / 2) * 95 + 180 + "px";
         container.css("height", heightValue);
 
+        formatAllVersus(arrayOfVersus);
         formatAllPvP(arrayOfPs);
         givePlayersClick(arrayOfPs);
 
@@ -556,6 +563,17 @@ $(document).ready(function() {
             
         });
         
+    };
+
+    // Format VS
+    const formatAllVersus = arrayOfElements => {
+        arrayOfElements.map((box, i) => {
+            let topValue = i * 25 + 30 + "px";
+            box.css({
+                top: topValue,
+                left: -21 + "%"
+            });
+        });
     };
 
     // Give player elements click functions
@@ -634,7 +652,7 @@ $(document).ready(function() {
         }
     };
     
-    
+    // Function to add/ remove bat image for labelling current round
     const addBat = () => {
         let currentRound = $(".round-" + roundNumber);
         let lastRound = $(".round-" + (roundNumber - 1));
@@ -642,10 +660,10 @@ $(document).ready(function() {
             .attr("src", "./images/tt-bat.png")
             .addClass("round__bat");
         currentRound.prepend(batElement);
-        currentRound.find("div").addClass("title__active");
+        currentRound.find(".round__title").addClass("title__active");
         if (roundNumber > 1) {
             lastRound.find("img").remove();
-            lastRound.find("div").removeClass("title__active");
+            lastRound.find(".round__title").removeClass("title__active");
         }
     };
 

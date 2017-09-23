@@ -339,6 +339,14 @@ main {
     .winners .pvp__block .round-1 .round__bat, .winners .pvp__block .round-2 .round__bat, .winners .pvp__block .round-3 .round__bat, .winners .pvp__block .round-4 .round__bat, .winners .pvp__block .round-5 .round__bat, .winners .pvp__block .round-6 .round__bat, .winners .pvp__block .round-7 .round__bat {
       position: relative;
       float: right; }
+    .winners .pvp__block .round-1 .round__vs, .winners .pvp__block .round-2 .round__vs, .winners .pvp__block .round-3 .round__vs, .winners .pvp__block .round-4 .round__vs, .winners .pvp__block .round-5 .round__vs, .winners .pvp__block .round-6 .round__vs, .winners .pvp__block .round-7 .round__vs {
+      display: inline-block;
+      position: relative;
+      font-size: 1.5em;
+      color: #ffffff; }
+      @media (max-width: 670px) {
+        .winners .pvp__block .round-1 .round__vs, .winners .pvp__block .round-2 .round__vs, .winners .pvp__block .round-3 .round__vs, .winners .pvp__block .round-4 .round__vs, .winners .pvp__block .round-5 .round__vs, .winners .pvp__block .round-6 .round__vs, .winners .pvp__block .round-7 .round__vs {
+          left: -22% !important; } }
     .winners .pvp__block .round-1 .pair__name_1, .winners .pvp__block .round-1 .pair__name_2, .winners .pvp__block .round-1 .pair__single, .winners .pvp__block .round-2 .pair__name_1, .winners .pvp__block .round-2 .pair__name_2, .winners .pvp__block .round-2 .pair__single, .winners .pvp__block .round-3 .pair__name_1, .winners .pvp__block .round-3 .pair__name_2, .winners .pvp__block .round-3 .pair__single, .winners .pvp__block .round-4 .pair__name_1, .winners .pvp__block .round-4 .pair__name_2, .winners .pvp__block .round-4 .pair__single, .winners .pvp__block .round-5 .pair__name_1, .winners .pvp__block .round-5 .pair__name_2, .winners .pvp__block .round-5 .pair__single, .winners .pvp__block .round-6 .pair__name_1, .winners .pvp__block .round-6 .pair__name_2, .winners .pvp__block .round-6 .pair__single, .winners .pvp__block .round-7 .pair__name_1, .winners .pvp__block .round-7 .pair__name_2, .winners .pvp__block .round-7 .pair__single {
       position: relative;
       display: inline-block;

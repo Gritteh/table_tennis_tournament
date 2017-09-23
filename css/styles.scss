@@ -449,6 +449,15 @@ main {
                 position: relative;
                 float: right;
             }
+            .round__vs {
+                display: inline-block;
+                position: relative;
+                font-size: 1.5em;
+                color: $white;
+                @media (max-width: 670px) {
+                    left: -22% !important;
+                }
+            }
             .pair__name_1, .pair__name_2, .pair__single {
         
                 @include winnerPairName();
