@@ -436,35 +436,36 @@ main {
             margin-bottom: 20px;
             border-radius: 5px;
             background-color: $darker_blue;
-        
 
-            // .round__pair {
-                // position: relative;
-                // width: 100%;
-                // margin-top: 30px;
-                .round__title {
-                    font-size: 2.5em;
-                    text-align: center;
-                    color: $white;
-                }
-                .pair__name_1, .pair__name_2, .pair__single {
-            
-                    @include winnerPairName();
-                    @include hoverPointer();
-                }
-                .pair__name_1 {
-                    @include playerOne();
-                }
-                .pair__name_2 {
-                    @include playerTwo();
-                }
-                .pair__single {
-                    @include buyinPlayer();
-                }
-                .winner__gold {
-                    @include buyinPlayer();
-                }
-            // }
+            .round__title {
+                font-size: 2.5em;
+                text-align: center;
+                color: $white;
+            }
+            .title__active {
+                margin-left: 50px;
+            }
+            .round__bat {
+                position: relative;
+                float: right;
+            }
+            .pair__name_1, .pair__name_2, .pair__single {
+        
+                @include winnerPairName();
+                @include hoverPointer();
+            }
+            .pair__name_1 {
+                @include playerOne();
+            }
+            .pair__name_2 {
+                @include playerTwo();
+            }
+            .pair__single {
+                @include buyinPlayer();
+            }
+            .winner__gold {
+                @include buyinPlayer();
+            }
         }
     }
     .container-fluid {

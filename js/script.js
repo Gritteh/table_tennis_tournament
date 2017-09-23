@@ -460,7 +460,8 @@ $(document).ready(function() {
         }, 250);
 
         pvpBlock.append(createRoundHtml(matchUpArray, 1));
-     
+        addBat();
+        
 
     });
 
@@ -523,7 +524,7 @@ $(document).ready(function() {
 
         formatAllPvP(arrayOfPs);
         givePlayersClick(arrayOfPs);
-        
+
         numberOfCurrentPlayers = arrayOfPlayers.length;
         return container;
         
@@ -628,8 +629,23 @@ $(document).ready(function() {
             // NEXT ROUND 
             roundNumber++;
             pvpBlock.append(createRoundHtml(randomiseMatchUps(arrayOfNamesNextRound), roundNumber));
+            addBat();
         }
     };
     
+    
+    const addBat = () => {
+        let currentRound = $(".round-" + roundNumber);
+        let lastRound = $(".round-" + (roundNumber - 1));
+        let batElement = $("<img/>")
+            .attr("src", "./images/tt-bat.png")
+            .addClass("round__bat");
+        currentRound.prepend(batElement);
+        currentRound.find("div").addClass("title__active");
+        if (roundNumber > 1) {
+            lastRound.find("img").remove();
+            lastRound.find("div").removeClass("title__active");
+        }
+    };
 
 });
