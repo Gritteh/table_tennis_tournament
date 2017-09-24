@@ -500,6 +500,47 @@ $(document).ready(function() {
     // Number for which round we're on
     let roundNumber = 1;
 
+    // Function to find number of rounds 
+    let roundCount = 1;
+    const numberOfRounds = numberOfPlayers => {
+        // Reset round count to start fresh
+        roundCount = 1;
+        let depletingNumber = numberOfPlayers;
+        // Loop until the number gets to one
+        while (depletingNumber > 1) {
+            // This finds the number of players in the next round
+            depletingNumber = depletingNumber % 2 === 0 ? depletingNumber/2 : ((depletingNumber - 1) / 2) + 1;
+            // Increment round count by one
+            roundCount++;
+        }
+        return roundCount;
+    };
+
+    // Function to give round title correct name using number of rounds total and current round
+    const giveRoundName = (numberOfRounds, currentRound) => {
+        // Depending on the difference in values, give a different title
+        switch (numberOfRounds - currentRound) {
+            // If there is no difference, it must be the final
+            case 0:
+            return "Champion!";
+            break;
+            // If there is a difference of 1, it must be the final... etc.
+            case 1:
+            return "Final";
+            break;
+            case 2:
+            return "Semi-final";
+            break;
+            // Otherwise, give "Round 1" etc.
+            default:
+            return "Round " + currentRound;
+            break;
+        }
+    };
+    
+    
+    
+
     // Create a group of HTML for any round 
     const createRoundHtml = (arrayOfPlayers, roundNumber) => {
         // Reset arrays to start new
@@ -516,7 +557,7 @@ $(document).ready(function() {
         // Round Title element
         let roundTitle = $("<div/>")
             .addClass("round__title")
-            .text("Round " + roundNumber);
+            .text(giveRoundName(numberOfRounds(playersArray.length), roundNumber));
         
         // Add title to container
         container.append(roundTitle);
