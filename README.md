@@ -2,6 +2,11 @@
 
 This is the first webpage I've made that I worked hard to polish, and I'm happy with the result. You can add as many players as you like, and generate a tournament tree from those players. Then, when you click start, you can begin selecting winners for each game.
 
+---
+[View the live version](http://jacks.work "T-T Tournament")
+
+[View the code on GitHub](https://github.com/Gritteh/table_tennis_tournament "T-T Github")
+
 --- 
 
 ## Technologies Used
