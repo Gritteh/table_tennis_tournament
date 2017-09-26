@@ -5,8 +5,6 @@ This is the first webpage I've made that I worked hard to polish, and I'm happy 
 ---
 [View the live version](http://jacks.work "T-T Tournament")
 
-[View the code on GitHub](https://github.com/Gritteh/table_tennis_tournament "T-T Github")
-
 --- 
 
 ## Technologies Used
